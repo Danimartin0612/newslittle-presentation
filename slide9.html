@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecanismos de Impacto: Validación Científica - Slide 8/25</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.min.js"></script>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            color: #381066;
+            font-size: 38px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        h2 {
+            font-family: 'Merriweather', serif;
+            color: #7021CC;
+            font-size: 24px;
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            opacity: 0;
+        }
+        .col-span-2 h2 {
+            animation: fadeIn 0.8s ease 0.3s forwards;
+        }
+        .col-span-1 h2 {
+            animation: fadeIn 0.8s ease 1.5s forwards;
+        }
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(to right, #7021CC, transparent);
+            margin: 10px 0 15px;
+            width: 100%;
+            max-width: 180px;
+            opacity: 0;
+            animation: expandWidth 1s ease 0.5s forwards;
+        }
+        .section-divider.right {
+            background: linear-gradient(to right, #FF9D00, transparent);
+            animation-delay: 1.7s;
+        }
+        .impact-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            height: 100%;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 2.2s forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .impact-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .impact-title {
+            color: #1688B1;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .impact-title i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .impact-desc {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6; /* Increased line height */
+        }
+        .highlight {
+            color: #7021CC;
+            font-weight: 500;
+        }
+        .chart-container {
+            height: 230px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.6s forwards;
+        }
+        .citation-box {
+            background-color: rgba(112, 33, 204, 0.05);
+            border-radius: 10px;
+            padding: 20px; /* Increased padding */
+            margin-top: 15px;
+            border-left: 4px solid #7021CC;
+            opacity: 0;
+            animation: fadeInRight 0.8s ease 1s forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            line-height: 1.5; /* Increased line height */
+        }
+        .citation-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(112, 33, 204, 0.1);
+            background-color: rgba(112, 33, 204, 0.08);
+        }
+        .citation-text {
+            font-style: italic;
+            color: #381066;
+            font-size: 15px; /* Slightly increased */
+            line-height: 1.6; /* Increased line height */
+        }
+        .citation-source {
+            font-weight: 500;
+            color: #7021CC;
+            margin-top: 8px;
+            font-size: 13px;
+        }
+        .citation-source a {
+            color: #7021CC;
+            text-decoration: none;
+            border-bottom: 1px dotted #7021CC;
+            transition: all 0.2s ease;
+            padding-bottom: 2px;
+        }
+        .citation-source a:hover {
+            color: #FF9D00;
+            border-bottom: 1px solid #FF9D00;
+        }
+        .theory-box {
+            display: flex;
+            align-items: center;
+            background-color: rgba(22, 136, 177, 0.05);
+            padding: 12px; /* Slightly increased */
+            border-radius: 8px;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+        }
+        .theory-box:nth-child(3) {
+            animation: fadeIn 0.8s ease 1.8s forwards;
+        }
+        .theory-box:nth-child(4) {
+            animation: fadeIn 0.8s ease 2s forwards;
+        }
+        .theory-box:nth-child(5) {
+            animation: fadeIn 0.8s ease 2.2s forwards;
+        }
+        .theory-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(22, 136, 177, 0.1);
+        }
+        .theory-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: white;
+            margin-right: 10px;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        .theory-box:hover .theory-icon {
+            transform: translateY(-3px) scale(1.1);
+        }
+        .teddy-icon {
+            position: relative;
+            width: 50px; /* Slightly reduced */
+            height: 50px; /* Slightly reduced */
+            border: 3px solid rgba(255, 109, 0, 0.4);
+            box-shadow: 0 0 15px rgba(255, 109, 0, 0.4);
+            transition: all 0.3s ease;
+            /* Removed constant rotation animation */
+        }
+        .teddy-icon i.fa-teddy-bear {
+            font-size: 30px; /* Slightly reduced */
+            color: #FF6D00;
+            transition: all 0.3s ease;
+        }
+        .book-icon {
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            font-size: 20px; /* Slightly reduced */
+            color: #0088CC;
+            z-index: 2;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 6px rgba(0, 136, 204, 0.8));
+            opacity: 0.95;
+            /* Removed floating animation, kept only subtle pulse */
+            animation: book-pulse 2.5s infinite alternate;
+        }
+        .teddy-icon:hover {
+            border-color: #FF6D00;
+            box-shadow: 0 0 25px rgba(255, 109, 0, 0.7);
+            transform: scale(1.2) rotate(10deg); /* Added rotation only on hover */
+        }
+        .teddy-icon:hover i.fa-teddy-bear {
+            color: #FF5500;
+            transform: rotate(15deg);
+        }
+        .teddy-icon:hover .book-icon {
+            color: #0066AA;
+            filter: drop-shadow(0 0 8px rgba(0, 136, 204, 0.9));
+            transform: scale(1.3) rotate(-15deg);
+        }
+        @keyframes gentle-pulse {
+            0% { box-shadow: 0 0 10px rgba(255, 109, 0, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 109, 0, 0.8); }
+            100% { box-shadow: 0 0 10px rgba(255, 109, 0, 0.3); }
+        }
+        @keyframes book-pulse {
+            0% { filter: drop-shadow(0 0 4px rgba(0, 136, 204, 0.5)); }
+            100% { filter: drop-shadow(0 0 8px rgba(0, 136, 204, 0.9)); }
+        }
+        .theory-content {
+            flex: 1;
+        }
+        .theory-title {
+            font-weight: 600;
+            color: #1688B1;
+            font-size: 15px;
+            margin-bottom: 4px; /* Increased slightly */
+        }
+        .theory-title a {
+            color: #1688B1;
+            text-decoration: none;
+            border-bottom: 1px dotted #1688B1;
+            transition: all 0.2s ease;
+            padding-bottom: 1px;
+        }
+        .theory-title a:hover {
+            color: #FF9D00;
+            border-bottom: 1px solid #FF9D00;
+        }
+        .theory-desc {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6; /* Increased line height */
+        }
+        .brain-image {
+            width: 100%;
+            height: 200px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.8s forwards;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .brain-image:hover {
+            transform: scale(1.02);
+        }
+        .brain-image-label {
+            font-size: 13px; /* Increased */
+            color: #666;
+            text-align: center;
+            margin-top: 5px;
+            line-height: 1.5; /* Increased */
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.9s forwards;
+        }
+        .logo-small {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 24px;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeIn 0.8s ease 0.2s forwards;
+        }
+        .logo-small .new {
+            color: #7021CC;
+        }
+        .logo-small .little {
+            color: #FF9D00;
+        }
+        .mascot-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mascot-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .mascot-img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+        .flow-indicator {
+            position: absolute;
+            height: 40px;
+            width: 150px;
+            bottom: 120px;
+            left: calc(33% - 75px); /* Center between columns */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInRight 0.8s ease 2.5s forwards;
+        }
+        .flow-arrow {
+            font-size: 24px;
+            color: #7021CC;
+            margin-right: 10px;
+            animation: bounce 2s infinite;
+        }
+        .flow-text {
+            font-size: 14px;
+            color: #7021CC;
+            font-weight: 500;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
+            40% {transform: translateX(10px);}
+            60% {transform: translateX(5px);}
+        }
+        @keyframes expandWidth {
+            from { opacity: 0; width: 0; }
+            to { opacity: 1; width: 180px; }
+        }
+        .list-disc li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            transition: transform 0.2s ease;
+        }
+        .list-disc li:hover {
+            transform: translateX(5px);
+        }
+        @keyframes highlightPulse {
+            0% { background-color: rgba(112, 33, 204, 0.05); }
+            50% { background-color: rgba(112, 33, 204, 0.15); }
+            100% { background-color: rgba(112, 33, 204, 0.05); }
+        }
+        .highlight-point {
+            display: inline-block;
+            border-radius: 4px;
+            padding: 2px 5px;
+            background-color: rgba(112, 33, 204, 0.05);
+            animation: highlightPulse 3s infinite;
+        }
+        .spotlight {
+            position: relative;
+        }
+        .spotlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 30px rgba(112, 33, 204, 0.3);
+            border-radius: 8px;
+            opacity: 0;
+            animation: spotlightPulse 3s infinite;
+            pointer-events: none;
+        }
+        @keyframes spotlightPulse {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="gradient-bg"></div>
+
+        <div class="logo-small">
+            <span class="new">New</span><span class="little">Little</span>
+        </div>
+
+        <h1>Mecanismos de Impacto: Validación Científica</h1>
+
+        <div class="grid grid-cols-3 gap-6">
+            <div class="col-span-2">
+                <h2>Base Neurofisiológica</h2>
+                <div class="section-divider"></div>
+
+                <div class="chart-container">
+                    <canvas id="hormoneChart"></canvas>
+                </div>
+
+                <div class="brain-image" style="background-image: url('https://www.kvc.org/wp-content/uploads/2017/01/Screen-Shot-2017-01-13-at-11.03.24-AM.png');">
+                </div>
+                <div class="brain-image-label">
+                    Comparación de cerebros infantiles: desarrollo normal (izq.) vs. exposición a estrés crónico (der.)
+                </div>
+
+                <div class="citation-box mt-4 spotlight">
+                    <div class="citation-text">"Los niños del grupo de narrativa mostraron un marcado <span class="highlight-point">aumento en oxitocina</span> combinado con una <span class="highlight-point">disminución en cortisol</span> después de la intervención de 30 minutos. También reportaron menos dolor y usaron más marcadores léxicos positivos al describir su tiempo en el hospital."</div>
+                    <div class="citation-source">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/34021093/" target="_blank">
+                            Brockington et al., "Storytelling increases oxytocin and positive emotions and decreases cortisol and pain in hospitalized children", PNAS 118(22), 2021.
+                            <i class="fas fa-external-link-alt" style="font-size: 10px; margin-left: 3px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-span-1">
+                <h2>Bases Psicológicas</h2>
+                <div class="section-divider right"></div>
+
+                <div class="theory-box">
+                    <div class="theory-icon" style="color: #7021CC;">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="theory-content">
+                        <div class="theory-title">
+                            <a href="https://www.simplypsychology.org/bowlby.html" target="_blank">
+                                Teoría del Apego (Bowlby)
+                                <i class="fas fa-external-link-alt" style="font-size: 10px; margin-left: 3px;"></i>
+                            </a>
+                        </div>
+                        <div class="theory-desc">El objeto de apego genera seguridad emocional en situaciones de estrés, actuando como "base segura".</div>
+                    </div>
+                </div>
+
+                <div class="theory-box">
+                    <div class="theory-icon teddy-icon">
+                        <i class="fas fa-teddy-bear"></i>
+                        <i class="fas fa-book book-icon"></i>
+                    </div>
+                    <div class="theory-content">
+                        <div class="theory-title">
+                            Objetos transicionales (Winnicott)
+                        </div>
+                        <div class="theory-desc">Los objetos preferidos del niño proporcionan confort y reducen ansiedad en momentos difíciles.</div>
+                    </div>
+                </div>
+
+                <div class="theory-box">
+                    <div class="theory-icon" style="color: #FF9D00;">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="theory-content">
+                        <div class="theory-title">
+                            <a href="https://www.goodtherapy.org/learn-about-therapy/types/narrative-therapy" target="_blank">
+                                Terapia Narrativa
+                                <i class="fas fa-external-link-alt" style="font-size: 10px; margin-left: 3px;"></i>
+                            </a>
+                        </div>
+                        <div class="theory-desc">Permite externalizar problemas y reconstruir historias personales con significados positivos.</div>
+                    </div>
+                </div>
+
+                <div class="impact-box mt-4">
+                    <div class="impact-title">
+                        <i class="fas fa-heartbeat" style="color: #7021CC;"></i>
+                        Efectos Medibles
+                    </div>
+                    <div class="impact-desc">
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li><span class="highlight">Oxitocina:</span> <span id="oxytocin-value">0</span> veces sobre nivel basal</li>
+                            <li><span class="highlight">Cortisol:</span> Reducción del <span id="cortisol-value">0</span>% vs. ~35% en control</li>
+                            <li><span class="highlight">Dolor:</span> Disminución de <span id="pain-value">0</span> puntos (escala 0-10)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flow indicator -->
+        <div class="flow-indicator">
+            <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="flow-text">Teoría aplicada</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chart.js Animation
+            const ctx = document.getElementById('hormoneChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Oxitocina (aumento x)', 'Cortisol (reducción %)', 'Dolor (reducción puntos)'],
+                    datasets: [
+                        {
+                            label: 'Grupo narrativa',
+                            data: [9, 60, 2.7],
+                            backgroundColor: 'rgba(112, 33, 204, 0.7)',
+                            borderColor: '#381066',
+                            borderWidth: 1,
+                            borderRadius: 5, // Rounded bars
+                            hoverBackgroundColor: 'rgba(112, 33, 204, 0.9)'
+                        },
+                        {
+                            label: 'Grupo control',
+                            data: [5, 35, 1.2],
+                            backgroundColor: 'rgba(71, 189, 211, 0.7)',
+                            borderColor: '#1688B1',
+                            borderWidth: 1,
+                            borderRadius: 5, // Rounded bars
+                            hoverBackgroundColor: 'rgba(71, 189, 211, 0.9)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 1500, // Longer animation
+                        easing: 'easeOutQuart'
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Efectos de la narrativa vs. control (Brockington et al., 2021)',
+                            font: {
+                                family: 'Poppins',
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            color: '#381066',
+                            padding: {
+                                bottom: 15
+                            }
+                        },
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 13
+                                },
+                                padding: 15
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(56, 16, 102, 0.8)',
+                            titleFont: {
+                                size: 14
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
+                            padding: 12,
+                            cornerRadius: 8,
+                            displayColors: false,
+                            callbacks: {
+                                afterTitle: function() {
+                                    return '----------------------------';
+                                },
+                                label: function(context) {
+                                    let value = context.raw;
+                                    let unit = '';
+                                    if (context.dataIndex === 0) unit = ' veces';
+                                    if (context.dataIndex === 1) unit = '%';
+                                    if (context.dataIndex === 2) unit = ' puntos';
+                                    return `${context.dataset.label}: ${value}${unit}`;
+                                },
+                                afterBody: function(context) {
+                                    const index = context[0].dataIndex;
+                                    if (index === 0) {
+                                        return 'Mayor aumento significa mejor producción de la "hormona del bienestar"';
+                                    } else if (index === 1) {
+                                        return 'Mayor reducción indica mejor disminución del estrés';
+                                    } else if (index === 2) {
+                                        return 'Mayor reducción significa mejor alivio del dolor';
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Valor',
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0,0,0,0.05)'
+                            },
+                            ticks: {
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 12
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Animated counters for values
+            setTimeout(function() {
+                new CountUp('oxytocin-value', 0, 9, 0, 1.5, {
+                    useEasing: true,
+                    separator: ''
+                }).start();
+
+                setTimeout(function() {
+                    new CountUp('cortisol-value', 0, 60, 0, 1.5, {
+                        useEasing: true,
+                        separator: ''
+                    }).start();
+
+                    setTimeout(function() {
+                        new CountUp('pain-value', 0, 2.7, 1, 1.5, {
+                            useEasing: true,
+                            separator: '',
+                            decimal: '.'
+                        }).start();
+                    }, 300);
+                }, 300);
+            }, 2500); // Start after the boxes have appeared
+        });
+    </script>
+</body>
+</html>

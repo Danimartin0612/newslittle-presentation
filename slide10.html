@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnología Newslittle: Buena, Segura y Escalable</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            color: #381066;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .logo-small {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 24px;
+            font-weight: bold;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .logo-small .new {
+            color: #7021CC;
+        }
+        .logo-small .little {
+            color: #FF9D00;
+        }
+        .top-section {
+            flex: 0 0 32%;
+            margin-bottom: 20px;
+        }
+        .bottom-section {
+            flex: 0 0 68%;
+            display: flex;
+            flex-direction: column;
+        }
+        .info-columns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            height: 100%;
+            animation: fadeUp 0.8s ease-out;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .info-column {
+            width: 32%;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(112, 33, 204, 0.07);
+            padding: 16px;
+            border-top: 3px solid;
+            transition: all 0.3s ease;
+        }
+        .info-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(112, 33, 204, 0.12);
+        }
+        .column-arch {
+            border-top-color: #7021CC;
+            animation-delay: 0.1s;
+        }
+        .column-ai {
+            border-top-color: #FF9D00;
+            animation-delay: 0.2s;
+        }
+        .column-security {
+            border-top-color: #42B883;
+            animation-delay: 0.3s;
+        }
+        .column-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .column-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: white;
+            margin-right: 12px;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        .info-column:hover .column-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+        .icon-arch {
+            background: linear-gradient(135deg, #7021CC 0%, #9153E8 100%);
+            box-shadow: 0 5px 15px rgba(112, 33, 204, 0.2);
+        }
+        .icon-ai {
+            background: linear-gradient(135deg, #FF9D00 0%, #FFB84D 100%);
+            box-shadow: 0 5px 15px rgba(255, 157, 0, 0.2);
+        }
+        .icon-security {
+            background: linear-gradient(135deg, #42B883 0%, #67D5A5 100%);
+            box-shadow: 0 5px 15px rgba(66, 184, 131, 0.2);
+        }
+        .column-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #381066;
+            margin: 0;
+        }
+        .bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .bullet-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            padding: 5px 0;
+        }
+        .bullet-item:hover {
+            transform: translateX(5px);
+        }
+        .bullet-icon {
+            margin-right: 10px;
+            margin-top: 4px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        .bullet-item:hover .bullet-icon {
+            transform: rotate(15deg);
+        }
+        .column-arch .bullet-icon {
+            color: #7021CC;
+        }
+        .column-ai .bullet-icon {
+            color: #FF9D00;
+        }
+        .column-security .bullet-icon {
+            color: #42B883;
+        }
+        .bullet-text {
+            color: #555;
+            line-height: 1.5;
+        }
+        .arch-container {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(112, 33, 204, 0.08);
+            padding: 25px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: fadeUp 1s ease-out 0.3s both;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(112, 33, 204, 0.08);
+        }
+        .arch-container:hover {
+            box-shadow: 0 12px 30px rgba(112, 33, 204, 0.12);
+            transform: translateY(-3px);
+            border-color: rgba(112, 33, 204, 0.2);
+        }
+        .arch-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #381066;
+            margin-bottom: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .arch-title i {
+            margin-right: 10px;
+            color: #7021CC;
+            transition: transform 0.3s ease;
+        }
+        .arch-container:hover .arch-title i {
+            transform: rotate(20deg);
+        }
+        .arch-img-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 1px solid rgba(112, 33, 204, 0.1);
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .arch-container:hover .arch-img-wrapper {
+            border-color: rgba(112, 33, 204, 0.3);
+            box-shadow: inset 0 0 30px rgba(112, 33, 204, 0.05);
+        }
+        .arch-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        .arch-container:hover .arch-img {
+            transform: scale(1.02);
+        }
+        .tech-tag {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(112, 33, 204, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .tech-tag i {
+            margin-right: 5px;
+            font-size: 10px;
+        }
+        .arch-container:hover .tech-tag {
+            background: #7021CC;
+            transform: translateY(-3px);
+        }
+        .mascot-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mascot-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .mascot-img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="gradient-bg"></div>
+
+        <div class="logo-small">
+            <span class="new">New</span><span class="little">Little</span>
+        </div>
+
+        <h1>Tecnología Newslittle: Buena, Segura y Escalable</h1>
+
+        <div class="top-section">
+            <div class="info-columns">
+                <div class="info-column column-arch">
+                    <div class="column-header">
+                        <div class="column-icon icon-arch">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h2 class="column-title">Arquitectura</h2>
+                    </div>
+                    <ul class="bullet-list">
+                        <li class="bullet-item">
+                            <i class="fas fa-check-circle bullet-icon"></i>
+                            <span class="bullet-text">Backend privado inaccesible</span>
+                        </li>
+                        <li class="bullet-item">
+                            <i class="fas fa-check-circle bullet-icon"></i>
+                            <span class="bullet-text">Frontend con balanceador</span>
+                        </li>
+                        <li class="bullet-item">
+                            <i class="fas fa-check-circle bullet-icon"></i>
+                            <span class="bullet-text">Google Cloud escalable</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-column column-ai">
+                    <div class="column-header">
+                        <div class="column-icon icon-ai">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h2 class="column-title">IA Ética</h2>
+                    </div>
+                    <ul class="bullet-list">
+                        <li class="bullet-item">
+                            <i class="fas fa-check-circle bullet-icon"></i>
+                            <span class="bullet-text">Difusión entrenada internamente</span>
+                        </li>
+                        <li class="bullet-item">
+                            <i class="fas fa-check-circle bullet-icon"></i>
+                            <span class="bullet-text">Datasets y prompts curados</span>
+                        </li>
+                        <li class="bullet-item">
+                            <i class="fas fa-check-circle bullet-icon"></i>
+                            <span class="bullet-text">Validación por psicólogos</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-column column-security">
+                    <div class="column-header">
+                        <div class="column-icon icon-security">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h2 class="column-title">Seguridad</h2>
+                    </div>
+                    <ul class="bullet-list">
+                        <li class="bullet-item">
+                            <i class="fas fa-check-circle bullet-icon"></i>
+                            <span class="bullet-text">Firewalls y NSG avanzados</span>
+                        </li>
+                        <li class="bullet-item">
+                            <i class="fas fa-check-circle bullet-icon"></i>
+                            <span class="bullet-text">Sin datos sensibles infantiles</span>
+                        </li>
+                        <li class="bullet-item">
+                            <i class="fas fa-check-circle bullet-icon"></i>
+                            <span class="bullet-text">Cumplimiento GDPR</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="arch-container">
+                <h3 class="arch-title">
+                    <i class="fas fa-project-diagram"></i>
+                    Arquitectura Técnica
+                </h3>
+                <div class="arch-img-wrapper">
+                    <img src="https://page1.genspark.site/v1/base64_upload/ccdd46cffa3a2dff8ca27faf450cb71e" alt="Arquitectura Técnica de Newslittle" class="arch-img">
+                    <div class="tech-tag">
+                        <i class="fas fa-code-branch"></i>
+                        Escalable
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
