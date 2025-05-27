@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Presentación Completa</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dongle:wght@700&family=Merriweather:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    background: #fff;
+  }
+  iframe {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+  }
+
+  .nav-button {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(112, 33, 204, 0.5);
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    user-select: none;
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+  .nav-button:hover {
+    background: rgba(112, 33, 204, 0.8);
+  }
+  .nav-button.left {
+    left: 10px;
+  }
+  .nav-button.right {
+    right: 10px;
+  }
+</style>
+</head>
+<body>
+
+<iframe id="slideFrame" src="slide1.html"></iframe>
+
+<div class="nav-button left" onclick="prevSlide()">&#x25C0;</div>
+<div class="nav-button right" onclick="nextSlide()">&#x25B6;</div>
+
+<script>
+  const slides = ["slide1.html", "slide2.html", "slide3.html", "slide4.html"];
+  let current = 0;
+
+  function showSlide(index) {
+    const iframe = document.getElementById('slideFrame');
+    iframe.src = slides[index];
+  }
+
+  function nextSlide() {
+    if (current < slides.length - 1) {
+      current++;
+      showSlide(current);
+    }
+  }
+
+  function prevSlide() {
+    if (current > 0) {
+      current--;
+      showSlide(current);
+    }
+  }
+</script>
+
+</body>
+</html>

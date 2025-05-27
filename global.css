@@ -1,0 +1,11 @@
+/* global.css */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  padding: 60px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}

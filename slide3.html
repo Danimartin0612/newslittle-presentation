@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Problema: Real y Urgente - Slide 3/26</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            color: #7021CC;
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 0;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        .urgency-subtitle {
+            color: #7021CC;
+            font-size: 24px;
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-family: 'Merriweather', serif;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+        h2 {
+            font-family: 'Merriweather', serif;
+            color: #7021CC;
+            font-size: 28px;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 0.8s;
+        }
+        .stat-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .box-anxiety {
+            border-color: #7021CC;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0.3s;
+        }
+        .box-mental {
+            border-color: #FF9D00;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0.4s;
+        }
+        .box-childhood {
+            border-color: #7021CC;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0.5s;
+        }
+        .box-hospital {
+            border-color: #FF9D00;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0.6s;
+        }
+        .stat-icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        .icon-anxiety {
+            color: #7021CC;
+        }
+        .icon-mental {
+            color: #FF9D00;
+        }
+        .icon-childhood {
+            color: #7021CC;
+        }
+        .icon-hospital {
+            color: #FF9D00;
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #381066;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .stat-desc {
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+        .challenge-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 4px solid #7021CC;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .challenge-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+        }
+        .left-challenges .challenge-box:nth-child(1) {
+            animation: fadeInLeft 0.6s ease forwards;
+            animation-delay: 0.9s;
+        }
+        .left-challenges .challenge-box:nth-child(2) {
+            animation: fadeInLeft 0.6s ease forwards;
+            animation-delay: 1.0s;
+        }
+        .right-challenges .challenge-box:nth-child(1) {
+            animation: fadeInRight 0.6s ease forwards;
+            animation-delay: 0.9s;
+        }
+        .right-challenges .challenge-box:nth-child(2) {
+            animation: fadeInRight 0.6s ease forwards;
+            animation-delay: 1.0s;
+        }
+        .challenge-icon {
+            font-size: 24px;
+            color: #7021CC;
+            margin-right: 15px;
+        }
+        .chart-container {
+            height: 200px;
+            position: relative;
+            margin-top: 15px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 1.2s;
+        }
+        .chart-source {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 8px;
+            text-align: center;
+        }
+        .source {
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .source a, .chart-source a {
+            color: #7021CC;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+        .source a:hover, .chart-source a:hover {
+            color: #8C29FF;
+            text-decoration: underline;
+        }
+        .source a i, .chart-source a i {
+            font-size: 10px;
+            margin-right: 4px;
+        }
+        .challenge-source {
+            font-size: 11px;
+            color: #666;
+            font-style: italic;
+            margin-top: 8px;
+            display: block;
+        }
+        .challenge-source a {
+            color: #7021CC;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+        .challenge-source a:hover {
+            color: #8C29FF;
+            text-decoration: underline;
+        }
+        .logo-small {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo-small .new {
+            color: #7021CC;
+        }
+        .logo-small .little {
+            color: #FF9D00;
+        }
+        .stats-container {
+            margin-bottom: 10px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .mascot-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+        .mascot-img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+        .highlighted-stat {
+            position: relative;
+        }
+        .highlight-circle {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #FF9D00;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        .summary-box {
+            position: absolute;
+            bottom: 90px;
+            right: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 10px 15px;
+            border-left: 4px solid #7021CC;
+            max-width: 200px;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: fadeInLeft 0.6s ease forwards;
+            animation-delay: 1.5s;
+        }
+        .summary-title {
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #7021CC;
+        }
+        .summary-content {
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .summary-content span {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="gradient-bg"></div>
+
+        <div class="logo-small">
+            <span class="new">New</span><span class="little">Little</span>
+        </div>
+
+        <h1>El Problema: Real y Urgente</h1>
+        <div class="urgency-subtitle">Estamos ante una crisis invisible en la infancia</div>
+
+        <div class="stats-container grid grid-cols-4 gap-5 mb-4">
+            <div class="stat-box box-anxiety highlighted-stat">
+                <div class="highlight-circle">!</div>
+                <div class="stat-icon icon-anxiety">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="stat-number"><span id="counter1">10</span>%</div>
+                <div class="stat-desc">de niños de 3-17 años tienen ansiedad diagnosticada</div>
+                <div class="source">
+                    <a href="https://www.cdc.gov/children-mental-health/es/data-research/datos-y-estadisticas-sobre-la-salud-mental-de-los-ninos.html" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> CDC, 2023
+                    </a>
+                </div>
+            </div>
+
+            <div class="stat-box box-mental">
+                <div class="stat-icon icon-mental">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="stat-number"><span id="counter2">20.8</span>%</div>
+                <div class="stat-desc">de adolescentes padece algún problema de salud mental</div>
+                <div class="source">
+                    <a href="https://www.fundacionidis.com/sala-prensa/notas-de-prensa/el-70-de-los-trastornos-mentales-se-inician-en-la-etapa-infanto-juvenil" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Fundación IDIS, 2024
+                    </a>
+                </div>
+            </div>
+
+            <div class="stat-box box-childhood highlighted-stat">
+                <div class="highlight-circle">!</div>
+                <div class="stat-icon icon-childhood">
+                    <i class="fas fa-child"></i>
+                </div>
+                <div class="stat-number"><span id="counter3">70</span>%</div>
+                <div class="stat-desc">de los trastornos mentales se inician en la etapa infanto-juvenil</div>
+                <div class="source">
+                    <a href="https://www.larazon.es/sociedad/70-trastornos-mentales-inician-etapa-infantojuvenil-apunta-informe-instituto-desarrollo-integracion-sanidad_2023082364e61840714dff0001c65966.html" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> La Razón, 2023
+                    </a>
+                </div>
+            </div>
+
+            <div class="stat-box box-hospital">
+                <div class="stat-icon icon-hospital">
+                    <i class="fas fa-hospital-alt"></i>
+                </div>
+                <div class="stat-number"><span id="counter4">58</span>%</div>
+                <div class="stat-desc">de las familias hospitalizadas experimentan elevados niveles de ansiedad</div>
+                <div class="source">
+                    <a href="http://scielo.sld.cu/scielo.php?script=sci_arttext&pid=S1561-31942024000300014" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> SciELO, 2024
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h2>Desafíos Actuales</h2>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div class="col-span-1 left-challenges">
+                <div class="challenge-box">
+                    <div class="challenge-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-lg text-gray-700">Escasez de herramientas personalizadas</div>
+                        <div class="text-gray-600">Faltan intervenciones atractivas y basadas en evidencia</div>
+                    </div>
+                </div>
+                <div class="challenge-box">
+                    <div class="challenge-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-lg text-gray-700">Dificultad para explicar conceptos dolorosos</div>
+                        <div class="text-gray-600">Los niños carecen de recursos para entender situaciones complejas</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-1 right-challenges">
+                <div class="challenge-box">
+                    <div class="challenge-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-lg text-gray-700">Alto coste social y económico</div>
+                        <div class="text-gray-600">€1,600/año por niño con problemas de salud mental no tratados</div>
+                        <div class="challenge-source">
+                            <a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-2020_en" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> EU's Horizon 2020, "Economic cost of untreated childhood mental disorders" (2022)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="challenge-box">
+                    <div class="challenge-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-lg text-gray-700">Necesidad de soluciones escalables</div>
+                        <div class="text-gray-600">Se requieren herramientas para contextos clínico, educativo y familiar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="mentalHealthChart" width="2400" height="400"></canvas>
+            <div class="chart-source">
+                <a href="https://newslittle.es/" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> Análisis basado en datos de Unicef y OMS 2024
+                </a>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <div class="summary-title">Dato Clave:</div>
+            <div class="summary-content">El <span>75%</span> de los problemas mentales en adultos comienzan <span>antes de los 18 años</span>.</div>
+        </div>
+
+        <div class="absolute bottom-8 right-8 flex items-center">
+            <div class="text-right mr-4">
+                <div class="text-sm text-gray-500">Slide 3 / 26</div>
+                <div class="text-xs text-gray-400">https://newslittle.es/</div>
+            </div>
+            <div class="mascot-container">
+                <img src="https://res.cloudinary.com/drghaazxy/image/upload/v1748316843/logo_sin_fondo_irq2z2.png" alt="Lila - Mascota de NewLittle" class="mascot-img">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate counters
+            const options = {
+                duration: 2,
+                useEasing: true,
+                useGrouping: false
+            };
+
+            setTimeout(() => {
+                new CountUp('counter1', 0, 10, 0, 1.5, options).start();
+                new CountUp('counter2', 0, 20.8, 1, 1.5, options).start();
+                new CountUp('counter3', 0, 70, 0, 1.5, options).start();
+                new CountUp('counter4', 0, 58, 0, 1.5, options).start();
+            }, 800);
+
+            // Initialize chart
+            setTimeout(() => {
+                initializeChart();
+            }, 1300);
+        });
+
+        function initializeChart() {
+            const ctx = document.getElementById('mentalHealthChart').getContext('2d');
+
+            // Create gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(112, 33, 204, 0.6)');
+            gradient.addColorStop(1, 'rgba(112, 33, 204, 0.1)');
+
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                    datasets: [{
+                        label: 'Problemas de salud mental infantil (%)',
+                        data: [12, 13, 14.5, 15.2, 16.8, 19.5, 21, 20.5, 20.8, 21.2],
+                        backgroundColor: gradient,
+                        borderColor: '#7021CC',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#7021CC',
+                        pointHoverRadius: 8,
+                        pointHoverBackgroundColor: '#FF9D00',
+                        pointHoverBorderWidth: 3,
+                        pointHoverBorderColor: 'rgba(255, 157, 0, 0.5)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutQuart'
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Prevalencia creciente de problemas de salud mental infantil 2015-2024',
+                            font: {
+                                family: 'Merriweather',
+                                size: 14,
+                                weight: 'bold'
+                            },
+                            color: '#7021CC',
+                            padding: {
+                                bottom: 15
+                            }
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(112, 33, 204, 0.9)',
+                            titleFont: {
+                                size: 14
+                            },
+                            bodyFont: {
+                                size: 12
+                            },
+                            padding: 10,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) {
+                                    const value = context.parsed.y;
+                                    const year = context.label;
+                                    let extraInfo = "";
+
+                                    if (year === "2020") {
+                                        extraInfo = "Impacto COVID: +16% vs. año anterior";
+                                    } else if (year === "2023") {
+                                        extraInfo = "Estabilización post-pandemia";
+                                    } else if (year === "2024") {
+                                        extraInfo = "Proyección: tendencia sostenida";
+                                    }
+
+                                    const result = [`${value}% de prevalencia`];
+                                    if (extraInfo) result.push(extraInfo);
+                                    return result;
+                                }
+                            }
+                        },
+                        annotation: {
+                            annotations: {
+                                point1: {
+                                    type: 'point',
+                                    xValue: 5,
+                                    yValue: 19.5,
+                                    backgroundColor: 'rgba(255, 157, 0, 0.7)',
+                                    borderWidth: 2,
+                                    borderColor: 'white',
+                                    radius: 8
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 10,
+                            max: 25,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                },
+                                font: {
+                                    weight: 'bold'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Porcentaje',
+                                font: {
+                                    weight: 'bold'
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Año',
+                                font: {
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    },
+                    elements: {
+                        line: {
+                            borderWidth: 3
+                        }
+                    }
+                }
+            });
+
+            // Animate the chart drawing
+            let drawChart = Chart.controllers.line.prototype.draw;
+            Chart.controllers.line.prototype.draw = function() {
+                let chart = this.chart;
+                let ctx = chart.ctx;
+                let _stroke = ctx.stroke;
+                ctx.stroke = function() {
+                    ctx.save();
+                    ctx.shadowColor = 'rgba(112, 33, 204, 0.5)';
+                    ctx.shadowBlur = 10;
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 4;
+                    _stroke.apply(this, arguments);
+                    ctx.restore();
+                };
+                drawChart.apply(this, arguments);
+                ctx.stroke = _stroke;
+            };
+        }
+    </script>
+</body>
+</html>

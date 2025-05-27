@@ -1,0 +1,219 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Little Steps, Big Hopes - Portada</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Merriweather:wght@400;600;700&amp;family=Dongle:wght@700&amp;display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                background-color: white;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .gradient-bg {
+                background: linear-gradient(135deg, rgba(206, 171, 255, 0.2) 0%, rgba(249, 199, 100, 0.2) 100%);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+            }
+            .logo {
+                font-family: 'Dongle', sans-serif;
+                font-weight: 700;
+                font-size: 72px;
+                letter-spacing: -1px;
+                margin-bottom: 10px;
+                line-height: 1;
+            }
+            .logo .new {
+                color: #7021CC;
+            }
+            .logo .little {
+                color: #FF9D00;
+            }
+            .logo-subtitle {
+                font-family: 'Merriweather', serif;
+                color: #7021CC;
+                font-size: 36px;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+            .tagline {
+                font-family: 'Merriweather', serif;
+                color: #381066;
+                font-size: 32px;
+                font-weight: 600;
+                margin-bottom: 40px;
+                max-width: 650px;
+                line-height: 1.3;
+            }
+            .presenter {
+                font-family: 'Poppins', sans-serif;
+                margin-bottom: 10px;
+            }
+            .presenter-name {
+                color: #7021CC;
+                font-size: 24px;
+                font-weight: 600;
+            }
+            .presenter-title {
+                color: #555;
+                font-size: 18px;
+            }
+            .contact {
+                position: absolute;
+                left: 60px;
+                bottom: 60px;
+                font-size: 16px;
+                color: #1688B1;
+            }
+            .contact i {
+                margin-right: 8px;
+            }
+            .contact-item {
+                margin-bottom: 5px;
+                display: flex;
+                align-items: center;
+            }
+            .mascot-container {
+                position: absolute;
+                top: 50%;
+                right: 60px;
+                transform: translateY(-50%);
+                width: 300px;
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: rgba(255, 255, 255, 0.7);
+                border-radius: 50%;
+                box-shadow: 0 4px 20px rgba(112, 33, 204, 0.15);
+                overflow: hidden;
+            }
+            .mascot-image {
+                width: 90%;
+                height: 90%;
+                object-fit: contain;
+            }
+            .content-area {
+                display: flex;
+                flex-direction: column;
+                max-width: 60%;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in {
+                animation: fadeIn 1s ease forwards;
+            }
+            .delay-1 {
+                animation-delay: 0.2s;
+                opacity: 0;
+            }
+            .delay-2 {
+                animation-delay: 0.4s;
+                opacity: 0;
+            }
+            .delay-3 {
+                animation-delay: 0.6s;
+                opacity: 0;
+            }
+            .delay-4 {
+                animation-delay: 0.8s;
+                opacity: 0;
+            }
+        </style>
+    <style id="slide-selected-style">
+      [data-slide-selected]::before
+      /* [data-slide-hover-selected]::before */ {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        width: 100%;
+        height: 100%;
+        box-sizing: content-box;
+        padding: 4px;
+        border-radius: 0px;
+        outline: 2px solid #0f7fff !important;
+        z-index: 10000;
+        pointer-events: none;
+      }
+
+     /* [data-slide-hover-selected], */
+      [data-slide-selected] {
+        position: relative;
+        outline: none;
+        cursor: default;
+      }
+
+      img[data-slide-selected],
+      img[data-slide-hover-selected],
+      [data-slide-hover-selected],
+      [item-slide-click-selected],
+      [item-slide-selected] {
+        border: 2px solid #0f7fff !important;
+      }
+
+
+    </style><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script><script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script></head>
+<body>
+    <div class="slide">
+        <div class="gradient-bg"></div>
+
+        <div class="content-area">
+            <div class="logo animate-fade-in">
+                <span class="new">New</span><span class="little">Little</span>
+            </div>
+            <div class="logo-subtitle animate-fade-in">
+                Steps, Big Hopes
+            </div>
+
+            <div class="tagline animate-fade-in delay-1">
+                Transformando objetos de apego en historias que sanan
+            </div>
+
+            <div class="presenter animate-fade-in delay-2">
+                <div class="presenter-name">Guido Secchi</div>
+                <div class="presenter-title">CEO &amp; Co-Fundador</div>
+            </div>
+        </div>
+
+        <div class="contact animate-fade-in delay-3">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>info@newlittle.es</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-globe"></i>
+                <span>www.newlittle.es</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+34 123 456 789</span>
+            </div>
+        </div>
+
+        <div class="mascot-container animate-fade-in delay-4">
+            <img src="https://res.cloudinary.com/drghaazxy/image/upload/v1748316843/logo_sin_fondo_irq2z2.png" alt="Lila - Mascota de NewLittle" class="mascot-image">
+        </div>
+    </div>
+
+    <script src="https://www.genspark.ai/slide-inner.js?_v=1"></script>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDmDcQiefb83t2zz%2Frr9BcrDS1IdFAj%2FKr3rharl83H6EnBqKVNcjf6hMPtzrhvd%2BZuvoCO9wPnEPKM%2FCTieKF6xc0PaXLwhUh3xgZKr08Y4rkipmB%2F8LE5pMiaaC0l7upaYdq9JWeDlFk5%2FiU6CzgcgVM8oVPY8W7pAHATF1tNMmf%2BFxNgOER%2Bz87LigfK4pgAsCs0lVg8I6yaYsTU2%2BQSahXm2rhx7ZRvV1vtc5uaO%2BsRWF9XAYzoL11EbTkXvDuMM1h6bnJASUyfPyBCgPzm6r9UPAqAAkhK58LgMDbyh9NWRZDnf2eqCcYuRQTMJhcORaue7lxGy6n3TRHubBktbjNyZSLi1rJvLOrG6Drqd8oz0tAlyhOQZtb1ENB607AlmKsf9UsHD1TvfTYvJ928W985ZP7gq0KE0hVr38D5oll4NsxRfu%2BeuhJwq1BdG6VCAfAPVwkCCZzbyiNbXx1oi%2B4no%2FJ05QvxFgFjhV7F6E4JmaTqxKXYekCOv1EI1PrOs5PH%2BXtWuXIzZ%2B5TyzJs4ufV6D%2F8SMhIsRtoHNaIftb%2FRZ%2FE9GQnrHf1bk34vbHpmn5iwwKOHLerWxqkZumK0QkOwTg%2Fkpc6X8wXMOW5%2FZT1V%2Flcntqr%2FcsKsZifiHeKFnGlw60xy9pi3NoliJOxGfzbVL%2BqLzGp0aCtC%2BK%2BajF1u%2BbHg56gVbQ%2Bz4MFuSJuXeSYyAGbMrVW53SOF%2FBdY%3D";
+        window.__genspark_locale = "es-ES";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDmDcQiefb83t2zz/rr9BcrDS1IdFAj/Kr3rharl83H6EnBqKVNcjf6hMPtzrhvd+ZuvoCO9wPnEPKM/CTieKF6xc0PaXLwhUh3xgZKr08Y4rkipmB/8LE5pMiaaC0l7upaYdq9JWeDlFk5/iU6CzgcgVM8oVPY8W7pAHATF1tNMmf+FxNgOER+z87LigfK4pgAsCs0lVg8I6yaYsTU2+QSahXm2rhx7ZRvV1vtc5uaO+sRWF9XAYzoL11EbTkXvDuMM1h6bnJASUyfPyBCgPzm6r9UPAqAAkhK58LgMDbyh9NWRZDnf2eqCcYuRQTMJhcORaue7lxGy6n3TRHubBktbjNyZSLi1rJvLOrG6Drqd8oz0tAlyhOQZtb1ENB607AlmKsf9UsHD1TvfTYvJ928W985ZP7gq0KE0hVr38D5oll4NsxRfu+euhJwq1BdG6VCAfAPVwkCCZzbyiNbXx1oi+4no/J05QvxFgFjhV7F6E4JmaTqxKXYekCOv1EI1PrOs5PH+XtWuXIzZ+5TyzJs4ufV6D/8SMhIsRtoHNaIftb/RZ/E9GQnrHf1bk34vbHpmn5iwwKOHLerWxqkZumK0QkOwTg/kpc6X8wXMOW5/ZT1V/lcntqr/csKsZifiHeKFnGlw60xy9pi3NoliJOxGfzbVL+qLzGp0aCtC+K+ajF1u+bHg56gVbQ+z4MFuSJuXeSYyAGbMrVW53SOF/BdY=";
+    </script>
+    </body></html>

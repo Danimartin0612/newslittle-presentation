@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impacto Económico de los Trastornos Mentales Infantiles - Slide 4/23</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            color: #381066;
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        .subtitle {
+            font-family: 'Merriweather', serif;
+            color: #7021CC;
+            font-size: 24px;
+            font-style: italic;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+        .cost-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 20px;
+            height: 100%;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            border-left: 5px solid;
+            border-top: 1px solid rgba(112, 33, 204, 0.1);
+            border-bottom: 1px solid rgba(112, 33, 204, 0.1);
+            border-right: 1px solid rgba(112, 33, 204, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .cost-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .cost-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+        .cost-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #381066;
+            margin-bottom: 8px;
+            font-family: 'Merriweather', serif;
+        }
+        .cost-desc {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.4;
+        }
+        .eu-color {
+            border-color: #0052B4;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0.4s;
+        }
+        .eu-icon {
+            color: #0052B4;
+        }
+        .uk-color {
+            border-color: #CF142B;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0.6s;
+        }
+        .uk-icon {
+            color: #CF142B;
+        }
+        .glob-color {
+            border-color: #009739;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0.8s;
+        }
+        .glob-icon {
+            color: #009739;
+        }
+        .unicef-color {
+            border-color: #00AEEF;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 1s;
+        }
+        .unicef-icon {
+            color: #00AEEF;
+        }
+        .source {
+            font-size: 11px;
+            color: #666;
+            margin-top: 12px;
+            display: block;
+            font-style: italic;
+        }
+        .source a {
+            color: #7021CC;
+            text-decoration: none;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+        .source a:hover {
+            color: #8C29FF;
+            text-decoration: underline;
+        }
+        .source a i {
+            font-size: 9px;
+            margin-left: 3px;
+        }
+        .chart-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 20px;
+            margin-top: 25px;
+            height: 300px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 1.2s;
+        }
+        .logo-small {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo-small .new {
+            color: #7021CC;
+        }
+        .logo-small .little {
+            color: #FF9D00;
+        }
+        .summary-box {
+            background-color: rgba(112, 33, 204, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            border-left: 5px solid #FF9D00;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInWithPulse 1s ease forwards;
+            animation-delay: 1.8s;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInWithPulse {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+                box-shadow: 0 0 0 0 rgba(255, 157, 0, 0);
+            }
+            70% {
+                opacity: 1;
+                transform: translateY(0);
+                box-shadow: 0 0 0 10px rgba(255, 157, 0, 0.4);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                box-shadow: 0 0 0 0 rgba(255, 157, 0, 0);
+            }
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 157, 0, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 157, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 157, 0, 0);
+            }
+        }
+        .summary-title {
+            font-weight: 600;
+            color: #381066;
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .summary-title i {
+            margin-right: 10px;
+            color: #FF9D00;
+        }
+        .summary-text {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .highlight {
+            color: #7021CC;
+            font-weight: 600;
+        }
+        .roi-visualization {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .roi-coin {
+            background-color: #7021CC;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 2px 6px rgba(112, 33, 204, 0.4);
+        }
+        .roi-arrow {
+            color: #FF9D00;
+            font-size: 24px;
+            margin: 0 15px;
+            position: relative;
+            animation: arrowBounce 2s infinite;
+        }
+        @keyframes arrowBounce {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+        }
+        .roi-coins {
+            display: flex;
+            align-items: center;
+        }
+        .roi-result {
+            background-color: #FF9D00;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-left: -10px;
+            box-shadow: 0 2px 6px rgba(255, 157, 0, 0.4);
+        }
+        .mascot-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+        }
+        .mascot-img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+        .footer {
+            position: absolute;
+            bottom: 8;
+            right: 8;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="gradient-bg"></div>
+
+        <div class="logo-small">
+            <span class="new">New</span><span class="little">Little</span>
+        </div>
+
+        <h1>Impacto Económico de los Trastornos Mentales Infantiles</h1>
+        <div class="subtitle">Datos que respaldan la urgencia de soluciones</div>
+
+        <div class="grid grid-cols-4 gap-6">
+            <div class="cost-card eu-color">
+                <div class="cost-icon eu-icon">
+                    <i class="fas fa-euro-sign"></i>
+                </div>
+                <div class="cost-value"><span id="counter1">€461B</span></div>
+                <div class="cost-desc">Coste total anual de trastornos mentales en Europa</div>
+                <span class="source">
+                    <a href="https://ec.europa.eu/health/scientific_committees/opinions_layman/mental-health-europe/en/index.htm" target="_blank">
+                        European Union's Health Report (2010) <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </span>
+            </div>
+
+            <div class="cost-card uk-color">
+                <div class="cost-icon uk-icon">
+                    <i class="fas fa-pound-sign"></i>
+                </div>
+                <div class="cost-value"><span id="counter2">£18.8B</span></div>
+                <div class="cost-desc">Para niños y jóvenes en Inglaterra (2022)</div>
+                <span class="source">
+                    <a href="https://www.mentalhealth.org.uk/research-and-policies" target="_blank">
+                        Mental Health Foundation UK (2022) <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </span>
+            </div>
+
+            <div class="cost-card glob-color">
+                <div class="cost-icon glob-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="cost-value"><span id="counter3">4% PIB</span></div>
+                <div class="cost-desc">Impacto económico en países de la UE</div>
+                <span class="source">
+                    <a href="https://www.oecd.org/health/health-systems/mental-health.htm" target="_blank">
+                        OECD Health Statistics (2023) <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </span>
+            </div>
+
+            <div class="cost-card unicef-color">
+                <div class="cost-icon unicef-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <div class="cost-value"><span id="counter4">$203B</span></div>
+                <div class="cost-desc">Pérdida potencial en ingresos futuros según UNICEF</div>
+                <span class="source">
+                    <a href="https://www.unicef.org/reports/state-worlds-children-2021" target="_blank">
+                        UNICEF Report (2021) <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="costComparisonChart"></canvas>
+        </div>
+
+        <div class="summary-box">
+            <div class="summary-title">
+                <i class="fas fa-exclamation-circle"></i> La urgencia económica para actuar
+            </div>
+            <div class="summary-text">
+                Los costos económicos de los trastornos mentales infantiles no tratados superan significativamente la inversión necesaria para implementar soluciones preventivas. Cada <span class="highlight">€1 invertido genera hasta €7 en beneficios</span> económicos a largo plazo por menor absentismo escolar, mayor productividad futura y reducción de costes sanitarios.
+            </div>
+
+            <div class="roi-visualization">
+                <div class="roi-coin">1€</div>
+                <div class="roi-arrow">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </div>
+                <div class="roi-coins">
+                    <div class="roi-result">7€</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 right-8 flex items-center">
+            <div class="text-right mr-4">
+                <div class="text-sm text-gray-500">Slide 4 / 23</div>
+                <div class="text-xs text-gray-400">https://newslittle.es/</div>
+            </div>
+            <div class="mascot-container">
+                <img src="https://res.cloudinary.com/drghaazxy/image/upload/v1748316843/logo_sin_fondo_irq2z2.png" alt="Lila - Mascota de NewLittle" class="mascot-img">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set a delay before initializing the chart to allow animations to complete
+            setTimeout(() => {
+                initializeChart();
+            }, 1200);
+        });
+
+        function initializeChart() {
+            const ctx = document.getElementById('costComparisonChart').getContext('2d');
+
+            // Define gradient for chart background
+            const gradientBg1 = ctx.createLinearGradient(0, 0, 0, 400);
+            gradientBg1.addColorStop(0, 'rgba(207, 20, 43, 0.7)');
+            gradientBg1.addColorStop(1, 'rgba(207, 20, 43, 0.4)');
+
+            const gradientBg2 = ctx.createLinearGradient(0, 0, 0, 400);
+            gradientBg2.addColorStop(0, 'rgba(112, 33, 204, 0.7)');
+            gradientBg2.addColorStop(1, 'rgba(112, 33, 204, 0.4)');
+
+            const gradientBg3 = ctx.createLinearGradient(0, 0, 0, 400);
+            gradientBg3.addColorStop(0, 'rgba(0, 151, 57, 0.7)');
+            gradientBg3.addColorStop(1, 'rgba(0, 151, 57, 0.4)');
+
+            const costChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Coste sin intervención', 'Coste con intervención temprana', 'Retorno de inversión'],
+                    datasets: [{
+                        label: 'Coste por niño (€)',
+                        data: [6800, 1600, 5200],
+                        backgroundColor: [
+                            gradientBg1,
+                            gradientBg2,
+                            gradientBg3
+                        ],
+                        borderColor: [
+                            'rgba(207, 20, 43, 1)',
+                            'rgba(112, 33, 204, 1)',
+                            'rgba(0, 151, 57, 1)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 6,
+                        hoverBorderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeOutQuart'
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Análisis de coste-beneficio por niño durante 5 años',
+                            font: {
+                                size: 16,
+                                weight: 'bold',
+                                family: 'Merriweather'
+                            },
+                            color: '#381066',
+                            padding: 20
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(112, 33, 204, 0.9)',
+                            titleFont: {
+                                size: 14,
+                                weight: 'bold',
+                                family: 'Merriweather'
+                            },
+                            bodyFont: {
+                                size: 12,
+                                family: 'Poppins'
+                            },
+                            padding: 12,
+                            cornerRadius: 8,
+                            displayColors: false,
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    return tooltipItems[0].label;
+                                },
+                                label: function(context) {
+                                    const value = context.parsed.y;
+                                    const labels = {
+                                        0: [
+                                            value + '€ por niño durante 5 años',
+                                            'Sin intervención temprana',
+                                            'Incluye costos médicos y sociales'
+                                        ],
+                                        1: [
+                                            value + '€ por niño durante 5 años',
+                                            'Con programas de prevención temprana',
+                                            'Reducción del 76% en costos totales'
+                                        ],
+                                        2: [
+                                            'Ahorro de ' + value + '€ por niño',
+                                            'ROI: 325% sobre la inversión inicial',
+                                            'Beneficio económico y social significativo'
+                                        ]
+                                    };
+                                    return labels[context.dataIndex];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Euros (€)',
+                                font: {
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '€';
+                                },
+                                font: {
+                                    weight: 'bold'
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
