@@ -3,14 +3,14 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* la ventana completa no scrollea */
+  overflow: hidden;
   box-sizing: border-box;
 }
 
 .slide {
   width: 100vw;
   height: 100vh;
-  padding: 40px; /* ajusta si quieres menos margen */
+  padding: 40px; /* ajusta si quieres más espacio */
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
@@ -18,7 +18,7 @@ html, body {
   flex-direction: column;
 }
 
-.slide > *:not(.mascot-container):not(.logo) {
-  flex: 1 1 auto;
-  overflow-y: auto; /* solo scrolla si necesario */
+.slide > *:not(.mascot-container):not(.logo):not(.logo-small) {
+  max-height: 90vh; /* ajusta este valor según tu necesidad */
+  overflow-y: auto;
 }
