@@ -1,3 +1,6 @@
+/* global.css */
+
+/* Ajusta todo el marco de la slide */
 html, body {
   width: 100%;
   height: 100%;
@@ -10,7 +13,7 @@ html, body {
 .slide {
   width: 100vw;
   height: 100vh;
-  padding: 40px; /* ajusta si quieres más espacio */
+  padding: 40px;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
@@ -18,7 +21,11 @@ html, body {
   flex-direction: column;
 }
 
-.slide > *:not(.mascot-container):not(.logo):not(.logo-small) {
-  max-height: 90vh; /* ajusta este valor según tu necesidad */
-  overflow-y: auto;
+/* Escala el contenido para que no se corte */
+.slide .content-area,
+.slide .grid,
+.slide .stats-container,
+.slide .values-section {
+  transform: scale(0.9); /* Ajusta 0.9, 0.85, etc. para que quepa */
+  transform-origin: top center;
 }
