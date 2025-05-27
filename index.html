@@ -18,73 +18,38 @@
     height: 100vh;
     border: none;
   }
-
-  .nav-button {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: rgba(112, 33, 204, 0.5);
-    color: white;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 9999;
-    user-select: none;
-    border-radius: 50%;
-    transition: background 0.3s;
-  }
-  .nav-button:hover {
-    background: rgba(112, 33, 204, 0.8);
-  }
-  .nav-button.left {
-    left: 10px;
-  }
-  .nav-button.right {
-    right: 10px;
-  }
 </style>
 </head>
 <body>
 
-<iframe id="slideFrame" src="slide1.html"></iframe>
-
-<div class="nav-button left" onclick="prevSlide()">&#x25C0;</div>
-<div class="nav-button right" onclick="nextSlide()">&#x25B6;</div>
+<iframe id="slide-iframe" src="slide1.html"></iframe>
 
 <script>
-const slides = [
-  "slide1.html", "slide2.html", "slide3.html", "slide4.html",
-  "slide5.html", "slide6.html", "slide7.html", "slide8.html",
-  "slide9.html", "slide10.html", "slide11.html", "slide12.html",
-  "slide13.html", "slide14.html", "slide15.html", "slide16.html",
-  "slide17.html", "slide18.html", "slide19.html", "slide20.html",
-  "slide21.html", "slide22.html", "slide23.html"
-];
+  const slides = [
+    "slide1.html", "slide2.html", "slide3.html", "slide4.html",
+    "slide5.html", "slide6.html", "slide7.html", "slide8.html",
+    "slide9.html", "slide10.html", "slide11.html", "slide12.html",
+    "slide13.html", "slide14.html", "slide15.html", "slide16.html",
+    "slide17.html", "slide18.html", "slide19.html", "slide20.html",
+    "slide21.html", "slide22.html", "slide23.html"
+  ];
 
-  let current = 0;
+  let currentSlide = 0;
 
   function showSlide(index) {
-    const iframe = document.getElementById('slideFrame');
+    const iframe = document.getElementById("slide-iframe");
     iframe.src = slides[index];
   }
 
-  function nextSlide() {
-    if (current < slides.length - 1) {
-      current++;
-      showSlide(current);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    } else if (event.key === "ArrowLeft") {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
     }
-  }
-
-  function prevSlide() {
-    if (current > 0) {
-      current--;
-      showSlide(current);
-    }
-  }
+  });
 </script>
 
 </body>
