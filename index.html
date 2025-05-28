@@ -73,7 +73,6 @@
     iframe.src = slides[index];
   }
 
-  // Botones de navegación
   function nextSlide() {
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
@@ -116,7 +115,6 @@
     }
   }
 
-  // Inicializa el primer slide
   document.addEventListener("DOMContentLoaded", () => {
     showSlide(currentSlide);
   });
