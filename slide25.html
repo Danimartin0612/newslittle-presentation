@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Estratégico B2C - Slide 22/26</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            color: #381066;
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #7021CC;
+            margin-bottom: 30px;
+        }
+        .logo-small {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo-small .new {
+            color: #7021CC;
+        }
+        .logo-small .little {
+            color: #FF9D00;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .video-container {
+            width: 45%;
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+        .video-frame {
+            width: 100%;
+            height: 320px;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        .video-backup {
+            padding: 10px;
+            background-color: rgba(112, 33, 204, 0.05);
+            text-align: center;
+            font-size: 12px;
+            color: #7021CC;
+        }
+        .video-backup a {
+            color: #7021CC;
+            text-decoration: underline;
+        }
+        .strategy-sections {
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .strategy-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid;
+        }
+        .strategy-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .value-box {
+            border-color: #7021CC;
+        }
+        .business-box {
+            border-color: #FF9D00;
+        }
+        .acquisition-box {
+            border-color: #1688B1;
+        }
+        .strategy-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .strategy-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: white;
+            font-size: 18px;
+        }
+        .value-icon {
+            background-color: #7021CC;
+        }
+        .business-icon {
+            background-color: #FF9D00;
+        }
+        .acquisition-icon {
+            background-color: #1688B1;
+        }
+        .strategy-title h3 {
+            font-family: 'Merriweather', serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #381066;
+            margin: 0;
+        }
+        .strategy-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .strategy-item {
+            display: flex;
+            align-items: center;
+            width: calc(50% - 5px);
+            margin-bottom: 8px;
+        }
+        .strategy-item i {
+            color: inherit;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+        .value-item {
+            color: #7021CC;
+        }
+        .business-item {
+            color: #FF9D00;
+        }
+        .acquisition-item {
+            color: #1688B1;
+        }
+        .inspiration-quote {
+            text-align: center;
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            font-style: italic;
+            color: #381066;
+            margin-top: 20px;
+            padding: 0 80px;
+            line-height: 1.6;
+            position: relative;
+        }
+        .inspiration-quote::before, .inspiration-quote::after {
+            content: '"';
+            font-size: 50px;
+            line-height: 0;
+            position: absolute;
+            opacity: 0.2;
+        }
+        .inspiration-quote::before {
+            top: 15px;
+            left: 50px;
+        }
+        .inspiration-quote::after {
+            content: '"';
+            bottom: -10px;
+            right: 50px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s forwards;
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s forwards;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+<div class="slide">
+    <div class="gradient-bg"></div>
+
+    <div class="logo-small">
+        <span class="new">New</span><span class="little">Little</span>
+    </div>
+
+    <h1 class="fade-in">Plan Estratégico B2C</h1>
+    <div class="subtitle fade-in">La app estilo "Netflix" de cuentos + cuentos físicos personalizados</div>
+
+    <div class="main-content">
+        <div class="video-container fade-in-up delay-1">
+            <div class="video-frame">
+                <iframe src="https://drive.google.com/file/d/1A-aCn1pBSyd6pdT2Buz8LO2WhkrDNZc4/preview" width="100%"
+                        height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="video-backup">
+                Si el vídeo no se muestra, visite: <a
+                    href="https://drive.google.com/file/d/1A-aCn1pBSyd6pdT2Buz8LO2WhkrDNZc4/view" target="_blank">Ver
+                vídeo en Google Drive</a>
+            </div>
+        </div>
+
+        <div class="strategy-sections">
+            <div class="strategy-box value-box fade-in-up delay-1">
+                <div class="strategy-title">
+                    <div class="strategy-icon value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Propuesta de Valor</h3>
+                </div>
+                <div class="strategy-content">
+                    <div class="strategy-item value-item">
+                        <i class="fas fa-check-circle"></i> App estilo Netflix con cuentos personalizados
+                    </div>
+                    <div class="strategy-item value-item">
+                        <i class="fas fa-check-circle"></i> Historias que transforman miedos
+                    </div>
+                    <div class="strategy-item value-item">
+                        <i class="fas fa-check-circle"></i> Cuentos físicos personalizados impresos
+                    </div>
+                    <div class="strategy-item value-item">
+                        <i class="fas fa-check-circle"></i> Validación psicológica en cada historia
+                    </div>
+                </div>
+            </div>
+
+            <div class="strategy-box business-box fade-in-up delay-2">
+                <div class="strategy-title">
+                    <div class="strategy-icon business-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <h3>Modelo de Negocio</h3>
+                </div>
+                <div class="strategy-content">
+                    <div class="strategy-item business-item">
+                        <i class="fas fa-check-circle"></i> Suscripción a 9,99€/mes o 99€/año
+                    </div>
+                    <div class="strategy-item business-item">
+                        <i class="fas fa-check-circle"></i> Cuentos físicos a 25€ personalizados
+                    </div>
+                    <div class="strategy-item business-item">
+                        <i class="fas fa-check-circle"></i> Bundles Digital + Físico con descuentos
+                    </div>
+                    <div class="strategy-item business-item">
+                        <i class="fas fa-check-circle"></i> Proceso de compra sencillo y rápido
+                    </div>
+                </div>
+            </div>
+
+            <div class="strategy-box acquisition-box fade-in-up delay-3">
+                <div class="strategy-title">
+                    <div class="strategy-icon acquisition-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Estrategia de Adquisición</h3>
+                </div>
+                <div class="strategy-content">
+                    <div class="strategy-item acquisition-item">
+                        <i class="fas fa-check-circle"></i> Redes sociales (Instagram, TikTok)
+                    </div>
+                    <div class="strategy-item acquisition-item">
+                        <i class="fas fa-check-circle"></i> Influencers y micro-influencers de crianza
+                    </div>
+                    <div class="strategy-item acquisition-item">
+                        <i class="fas fa-check-circle"></i> Contenido emocional y testimonios
+                    </div>
+                    <div class="strategy-item acquisition-item">
+                        <i class="fas fa-check-circle"></i> Referidos de padres a otros padres
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="inspiration-quote fade-in delay-3">
+        "Un cuento a la vez, para que cada niño tenga su historia de sanación y cada familia un momento de conexión"
+    </div>
+</div>
+</body>
+</html>

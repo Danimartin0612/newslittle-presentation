@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contribución a Objetivos de Desarrollo Sostenible (ODS) - Slide 22/26</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="global.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            color: #381066;
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            animation: fadeIn 0.8s ease-out;
+        }
+        .subtitle {
+            font-family: 'Merriweather', serif;
+            color: #7021CC;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sdg-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .sdg-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 20px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+            border-top: 5px solid;
+        }
+        .sdg-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sdg-card:nth-child(1) { animation-delay: 0.3s; }
+        .sdg-card:nth-child(2) { animation-delay: 0.5s; }
+        .sdg-card:nth-child(3) { animation-delay: 0.7s; }
+        .sdg-card:nth-child(4) { animation-delay: 0.9s; }
+
+        .sdg-3 { border-color: #4C9F38; }
+        .sdg-4 { border-color: #C5192D; }
+        .sdg-10 { border-color: #DD1367; }
+        .sdg-17 { border-color: #19486A; }
+
+        .sdg-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .sdg-icon {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-shrink: 0;
+        }
+        .sdg-title {
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .sdg-card:hover .sdg-title {
+            transform: translateX(5px);
+        }
+        .sdg-3 .sdg-title { color: #4C9F38; }
+        .sdg-4 .sdg-title { color: #C5192D; }
+        .sdg-10 .sdg-title { color: #DD1367; }
+        .sdg-17 .sdg-title { color: #19486A; }
+
+        .sdg-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .sdg-targets {
+            margin-top: 15px;
+        }
+        .sdg-target {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .target-icon {
+            margin-right: 8px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .sdg-3 .target-icon { color: #4C9F38; }
+        .sdg-4 .target-icon { color: #C5192D; }
+        .sdg-10 .target-icon { color: #DD1367; }
+        .sdg-17 .target-icon { color: #19486A; }
+
+        .target-text {
+            font-size: 13px;
+            color: #555;
+        }
+        .logo-small {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo-small .new {
+            color: #7021CC;
+        }
+        .logo-small .little {
+            color: #FF9D00;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="gradient-bg"></div>
+
+        <div class="logo-small">
+            <span class="new">New</span><span class="little">Little</span>
+        </div>
+
+        <h1>Contribución a Objetivos de Desarrollo Sostenible (ODS)</h1>
+        <div class="subtitle">Alineación de NewLittle con la agenda global</div>
+
+        <div class="sdg-grid">
+            <!-- ODS 3: Salud y Bienestar -->
+            <div class="sdg-card sdg-3">
+                <div class="sdg-header">
+                    <div class="sdg-icon" style="background-image: url('https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2019/09/S_SDG_Icons_Inverted_Transparent_WEB-03.png');"></div>
+                    <div>
+                        <a href="https://www.un.org/sustainabledevelopment/es/health/" target="_blank" class="sdg-title">3: Salud y Bienestar</a>
+                    </div>
+                </div>
+                <div class="sdg-description">
+                    NewLittle contribuye directamente a la mejora de la salud mental infantil a través de herramientas terapéuticas narrativas que abordan miedos, traumas y situaciones estresantes, promoviendo el bienestar emocional desde una edad temprana.
+                </div>
+                <div class="sdg-targets">
+                    <div class="sdg-target">
+                        <div class="target-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="target-text"><strong>Meta 3.4:</strong> Reducir la mortalidad prematura y promover la salud mental y el bienestar.</div>
+                    </div>
+                    <div class="sdg-target">
+                        <div class="target-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="target-text"><strong>Meta 3.8:</strong> Lograr la cobertura sanitaria universal, incluida la protección contra riesgos financieros.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ODS 4: Educación de Calidad -->
+            <div class="sdg-card sdg-4">
+                <div class="sdg-header">
+                    <div class="sdg-icon" style="background-image: url('https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2019/09/S_SDG_Icons_Inverted_Transparent_WEB-04.png');"></div>
+                    <div>
+                        <a href="https://www.un.org/sustainabledevelopment/es/education/" target="_blank" class="sdg-title">4: Educación de Calidad</a>
+                    </div>
+                </div>
+                <div class="sdg-description">
+                    Nuestras soluciones facilitan entornos de aprendizaje seguros y emocionalmente estables, contribuyendo a mejorar los resultados educativos al abordar barreras emocionales que interfieren con el desarrollo académico y social.
+                </div>
+                <div class="sdg-targets">
+                    <div class="sdg-target">
+                        <div class="target-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="target-text"><strong>Meta 4.1:</strong> Asegurar que todas las niñas y niños completen una educación primaria y secundaria de calidad.</div>
+                    </div>
+                    <div class="sdg-target">
+                        <div class="target-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="target-text"><strong>Meta 4.a:</strong> Construir y adecuar instalaciones educativas que tengan en cuenta las necesidades de los niños y ofrezcan entornos de aprendizaje seguros.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ODS 10: Reducción de las Desigualdades -->
+            <div class="sdg-card sdg-10">
+                <div class="sdg-header">
+                    <div class="sdg-icon" style="background-image: url('https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2019/09/S_SDG_Icons_Inverted_Transparent_WEB-10.png');"></div>
+                    <div>
+                        <a href="https://www.un.org/sustainabledevelopment/es/inequality/" target="_blank" class="sdg-title">10: Reducción de Desigualdades</a>
+                    </div>
+                </div>
+                <div class="sdg-description">
+                    A través de nuestro modelo "Uno por Uno", democratizamos el acceso a herramientas de salud mental infantil para comunidades vulnerables, contribuyendo a reducir la brecha de acceso a recursos terapéuticos de calidad.
+                </div>
+                <div class="sdg-targets">
+                    <div class="sdg-target">
+                        <div class="target-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="target-text"><strong>Meta 10.2:</strong> Potenciar y promover la inclusión social, económica y política de todas las personas.</div>
+                    </div>
+                    <div class="sdg-target">
+                        <div class="target-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="target-text"><strong>Meta 10.3:</strong> Garantizar la igualdad de oportunidades y reducir la desigualdad de resultados.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ODS 17: Alianzas para lograr los objetivos -->
+            <div class="sdg-card sdg-17">
+                <div class="sdg-header">
+                    <div class="sdg-icon" style="background-image: url('https://page1.genspark.site/v1/base64_upload/4c1ee581af7e835ecc9b4a85db850879');"></div>
+                    <div>
+                        <a href="https://www.un.org/sustainabledevelopment/es/globalpartnerships/" target="_blank" class="sdg-title">17: Alianzas para los Objetivos</a>
+                    </div>
+                </div>
+                <div class="sdg-description">
+                    Trabajamos en colaboración con instituciones educativas, centros de salud, fundaciones y gobiernos para crear un ecosistema sostenible que mejore la salud mental infantil a escala global mediante alianzas estratégicas.
+                </div>
+                <div class="sdg-targets">
+                    <div class="sdg-target">
+                        <div class="target-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="target-text"><strong>Meta 17.16:</strong> Mejorar la Alianza Mundial para el Desarrollo Sostenible mediante alianzas entre múltiples interesados.</div>
+                    </div>
+                    <div class="sdg-target">
+                        <div class="target-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="target-text"><strong>Meta 17.17:</strong> Fomentar y promover la constitución de alianzas eficaces en las esferas pública, público-privada y de la sociedad civil.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
