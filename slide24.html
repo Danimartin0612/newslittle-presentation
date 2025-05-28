@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Estratégico B2B - Slide 21/26</title>
+    <title>Contacto y Próximos Pasos - Slide 20/20</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="global.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -32,7 +31,173 @@
             color: #381066;
             font-size: 42px;
             font-weight: 600;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 40px 0;
+        }
+        .contact-info {
+            flex: 1;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .contact-name {
+            font-family: 'Merriweather', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #381066;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .contact-name i {
+            margin-right: 12px;
+            color: #7021CC;
+        }
+        .contact-role {
+            font-size: 18px;
+            color: #7021CC;
+            margin-bottom: 20px;
+            margin-left: 36px;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #555;
+        }
+        .contact-detail i {
+            width: 24px;
+            margin-right: 12px;
+            color: #1688B1;
+            text-align: center;
+        }
+        .qr-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 30px;
+        }
+        .qr-title {
+            font-weight: 600;
+            font-size: 18px;
+            color: #381066;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #CCCCCC;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            background-color: #F9F9F9;
+        }
+        .qr-desc {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            max-width: 200px;
+        }
+        .social-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .social-title {
+            font-weight: 600;
+            font-size: 18px;
+            color: #381066;
+            margin-bottom: 15px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+        .action-container {
+            background-color: rgba(255, 157, 0, 0.05);
+            border-radius: 15px;
+            padding: 25px 40px;
+            text-align: center;
+            margin-top: 40px;
+            border-left: 4px solid #FF9D00;
+            position: relative;
+        }
+        .action-title {
+            font-family: 'Merriweather', serif;
+            font-weight: 600;
+            font-size: 24px;
+            color: #FF9D00;
+            margin-bottom: 15px;
+        }
+        .action-steps {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .action-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 180px;
+        }
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            color: #FF9D00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .step-text {
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+        .website-footer {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #555;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .website-footer span {
+            color: #7021CC;
         }
         .logo-small {
             position: absolute;
@@ -47,270 +212,28 @@
         .logo-small .little {
             color: #FF9D00;
         }
-        .main-container {
-            display: flex;
-            height: calc(100vh - 200px);
-            max-height: 520px;
-        }
-        .left-column {
-            width: 58%;
-            padding-right: 30px;
-        }
-        .right-column {
-            width: 42%;
-            padding-left: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        .segment-section {
-            margin-bottom: 25px;
-        }
-        .section-title {
+        .slide-indicator {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
             display: flex;
             align-items: center;
-            font-family: 'Merriweather', serif;
-            color: #381066;
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 15px;
         }
-        .section-title i {
+        .slide-text {
             margin-right: 10px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: rgba(112, 33, 204, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #7021CC;
-        }
-        .segment-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .segment-box {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            padding: 20px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .segment-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-        .segment-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            color: white;
-            font-size: 20px;
-        }
-        .hospital-icon {
-            background: linear-gradient(135deg, #7021CC 0%, #9153E8 100%);
-        }
-        .school-icon {
-            background: linear-gradient(135deg, #1688B1 0%, #47BDD3 100%);
-        }
-        .ngo-icon {
-            background: linear-gradient(135deg, #FF9D00 0%, #FFC069 100%);
-        }
-        .government-icon {
-            background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
-        }
-        .segment-title {
-            font-weight: 600;
-            font-size: 18px;
-            color: #381066;
-            margin-bottom: 10px;
-        }
-        .segment-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .segment-list li {
-            display: flex;
-            margin-bottom: 10px;
             font-size: 14px;
             color: #555;
         }
-        .segment-list li i {
-            color: #7021CC;
-            margin-right: 8px;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-        .chart-container {
-            width: 100%;
-            height: 240px;
-            margin-bottom: 20px;
-        }
-        .info-module {
-            background-color: #F9FAFB;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-            border-left: 4px solid;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .info-module:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-        }
-        .module-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .module-icon {
-            font-size: 28px;
-            color: white;
+        .mascot-icon {
             width: 50px;
             height: 50px;
+            background-color: #7021CC;
             border-radius: 50%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        .module-header h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 18px;
-            font-weight: 600;
-            margin: 0;
-        }
-        .module-header .timeframe {
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            margin-left: 8px;
-        }
-        .module-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .module-list li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-            font-size: 14px;
-            color: #555;
-        }
-        .module-list li:last-child {
-            margin-bottom: 0;
-        }
-        .module-list li i {
-            color: #555;
-            margin-right: 10px;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-        .revenue-module {
-            border-left-color: #7021CC;
-        }
-        .revenue-module .module-icon {
-            background-color: #7021CC;
-        }
-        .revenue-module .module-header h3 {
-            color: #7021CC;
-        }
-        .objectives-module {
-            border-left-color: #FF9D00;
-        }
-        .objectives-module .module-icon {
-            background-color: #FF9D00;
-        }
-        .objectives-module .module-header h3 {
-            color: #FF9D00;
-        }
-        .value-prop-module {
-            border-left-color: #1688B1;
-        }
-        .value-prop-module .module-icon {
-            background-color: #1688B1;
-        }
-        .value-prop-module .module-header h3 {
-            color: #1688B1;
-        }
-        .strategy-module {
-            border-left-color: #10B981;
-        }
-        .strategy-module .module-icon {
-            background-color: #10B981;
-        }
-        .strategy-module .module-header h3 {
-            color: #10B981;
-        }
-        .highlight {
-            color: #7021CC;
-            font-weight: 500;
-        }
-        .highlight-orange {
-            color: #FF9D00;
-            font-weight: 500;
-        }
-        .arpu-visualization {
-            height: 8px;
-            background-color: #e9e9e9;
-            border-radius: 4px;
-            margin: 5px 0 10px 0;
-            overflow: hidden;
-        }
-        .arpu-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #7021CC, #9153E8);
-            border-radius: 4px;
-            width: 65%;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .fade-in {
-            animation: fadeIn 0.8s forwards;
-        }
-        .fade-in-up {
-            animation: fadeInUp 0.8s forwards;
-        }
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-        .delay-3 {
-            animation-delay: 0.6s;
-        }
-        .delay-4 {
-            animation-delay: 0.8s;
+            align-items: center;
+            color: white;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -322,281 +245,103 @@
         <span class="new">New</span><span class="little">Little</span>
     </div>
 
-    <h1 class="fade-in">Plan Estratégico B2B</h1>
+    <h1>Contacto y Próximos Pasos</h1>
 
-    <div class="main-container">
-        <div class="left-column">
-            <div class="segment-section fade-in">
-                <div class="section-title">
-                    <i class="fas fa-building"></i> Segmentos Institucionales Prioritarios
-                </div>
-                <div class="segment-grid">
-                    <div class="segment-box fade-in-up delay-1">
-                        <div class="segment-icon hospital-icon">
-                            <i class="fas fa-hospital"></i>
-                        </div>
-                        <div class="segment-title">Hospitales y Centros Sanitarios</div>
-                        <ul class="segment-list">
-                            <li><i class="fas fa-check-circle"></i> Unidades de pediatría oncológica</li>
-                            <li><i class="fas fa-check-circle"></i> Hospitales infantiles especializados</li>
-                            <li><i class="fas fa-check-circle"></i> Centros de salud mental infantil</li>
-                        </ul>
-                    </div>
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="contact-name">
+                <i class="fas fa-user-circle"></i> Guido Secchi
+            </div>
+            <div class="contact-role">CEO & Fundador</div>
 
-                    <div class="segment-box fade-in-up delay-2">
-                        <div class="segment-icon school-icon">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <div class="segment-title">Centros Educativos</div>
-                        <ul class="segment-list">
-                            <li><i class="fas fa-check-circle"></i> Colegios internacionales</li>
-                            <li><i class="fas fa-check-circle"></i> Escuelas con programas emocionales</li>
-                            <li><i class="fas fa-check-circle"></i> Redes educativas multinacionales</li>
-                        </ul>
-                    </div>
-
-                    <div class="segment-box fade-in-up delay-3">
-                        <div class="segment-icon ngo-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <div class="segment-title">ONGs y Fundaciones</div>
-                        <ul class="segment-list">
-                            <li><i class="fas fa-check-circle"></i> Organizaciones de ayuda a la infancia</li>
-                            <li><i class="fas fa-check-circle"></i> Fundaciones de salud infantil</li>
-                            <li><i class="fas fa-check-circle"></i> Programas de cooperación internacional</li>
-                        </ul>
-                    </div>
-
-                    <div class="segment-box fade-in-up delay-4">
-                        <div class="segment-icon government-icon">
-                            <i class="fas fa-landmark"></i>
-                        </div>
-                        <div class="segment-title">Entidades Públicas</div>
-                        <ul class="segment-list">
-                            <li><i class="fas fa-check-circle"></i> Consejerías de educación</li>
-                            <li><i class="fas fa-check-circle"></i> Programas de bienestar social</li>
-                            <li><i class="fas fa-check-circle"></i> Centros de protección de menores</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="contact-detail">
+                <i class="fas fa-envelope"></i>
+                <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                         data-cfemail="bad9d5d4cedbd9ced5fad4dfcdc9d6d3ceced6df94d9d5d7">cuentos@newslittle.es</a></span>
             </div>
 
-            <div class="fade-in delay-4">
-                <div class="section-title">
-                    <i class="fas fa-chart-line"></i> KPIs Clave: Proyección de Crecimiento Exponencial
-                </div>
-                <div class="chart-container">
-                    <canvas id="growthChart"></canvas>
-                </div>
+            <div class="contact-detail">
+                <i class="fas fa-phone"></i>
+                <span>+34 656 79 00 82</span>
+            </div>
+
+            <div class="contact-detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Madrid - España</span>
+            </div>
+
+            <div class="contact-detail">
+                <i class="fas fa-globe"></i>
+                <span>www.newslittle.es</span>
             </div>
         </div>
 
-        <div class="right-column">
-            <div class="info-module revenue-module fade-in-up delay-1">
-                <div class="module-header">
-                    <div class="module-icon">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <h3>Modelo de Ingresos</h3>
-                </div>
-                <ul class="module-list">
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span><span class="highlight">Licencias Anuales</span> por institución, escalables por número de usuarios</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span><span class="highlight">Tarifas por Módulos</span> adicionales y features premium</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span><span class="highlight-orange">ARPU:</span> €4,000 (Promedio por institución/año)</span>
-                    </li>
-                </ul>
-                <div class="arpu-visualization">
-                    <div class="arpu-bar"></div>
-                </div>
+        <div class="qr-container">
+            <div class="qr-title">¡Agenda una demo personalizada!</div>
+            <div class="qr-code">
+                <i class="fas fa-qrcode" style="font-size: 80px; color: #7021CC; opacity: 0.5;"></i>
+            </div>
+            <div class="qr-desc">Escanea para solicitar información o agendar una demostración de Newslittle</div>
+        </div>
+    </div>
+
+    <div class="social-container">
+        <div class="social-title">Síguenos en redes sociales</div>
+        <div class="social-icons">
+            <div class="social-icon" style="background-color: #7021CC;">
+                <i class="fab fa-linkedin-in"></i>
             </div>
 
-            <div class="info-module objectives-module fade-in-up delay-2">
-                <div class="module-header">
-                    <div class="module-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Objetivos <span class="timeframe">(12-18 meses)</span></h3>
-                </div>
-                <ul class="module-list">
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span><span class="highlight">50 nuevas instituciones</span> en España, LatAm y Europa</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span>Facturación B2B: <span class="highlight-orange">€200K</span></span>
-                    </li>
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span><span class="highlight">+5,000 niños</span> beneficiados a través de instituciones</span>
-                    </li>
-                </ul>
+            <div class="social-icon" style="background-color: #1688B1;">
+                <i class="fab fa-twitter"></i>
             </div>
 
-            <div class="info-module value-prop-module fade-in-up delay-3">
-                <div class="module-header">
-                    <div class="module-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Propuesta de Valor B2B</h3>
-                </div>
-                <ul class="module-list">
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span><span class="highlight">Personalización institucional</span> y white-label</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span><span class="highlight">Reportes de impacto</span> y seguimiento emocional</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span>ROI demostrable en <span class="highlight-orange">bienestar y aprendizaje</span></span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="info-module strategy-module fade-in-up delay-4">
-                <div class="module-header">
-                    <div class="module-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Estrategia de Penetración</h3>
-                </div>
-                <ul class="module-list">
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span>Programa piloto <span class="highlight">sin coste</span> (30 días)</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span>Alianzas con <span class="highlight">instituciones referentes</span></span>
-                    </li>
-                    <li>
-                        <i class="fas fa-arrow-alt-circle-right"></i>
-                        <span>Participación en <span
-                                class="highlight-orange">ferias educativas</span> y congresos</span>
-                    </li>
-                </ul>
+            <div class="social-icon" style="background-color: #FF9D00;">
+                <i class="fab fa-instagram"></i>
             </div>
         </div>
     </div>
+
+    <div class="action-container">
+        <div class="action-title">¿Listo para transformar la salud emocional infantil juntos?</div>
+
+        <div class="action-steps">
+            <div class="action-step">
+                <div class="step-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="step-text"><strong>Agenda una demo</strong><br>Personalizada para tu institución</div>
+            </div>
+
+            <div class="action-step">
+                <div class="step-icon">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div class="step-text"><strong>Participa en un piloto</strong><br>Con seguimiento y apoyo completo</div>
+            </div>
+
+            <div class="action-step">
+                <div class="step-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="step-text"><strong>Explora oportunidades</strong><br>De colaboración o inversión</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="website-footer">
+        www.<span>new</span><span style="color: #FF9D00;">little</span>.com | Transformando la salud emocional infantil,
+        una historia a la vez
+    </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Growth Chart
-        const ctx = document.getElementById('growthChart').getContext('2d');
-        const growthChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Año 1', 'Año 2', 'Año 3'],
-                datasets: [
-                    {
-                        label: 'Instituciones',
-                        data: [50, 120, 300],
-                        backgroundColor: '#7021CC80',
-                        borderColor: '#7021CC',
-                        borderWidth: 1,
-                        borderRadius: 5,
-                        yAxisID: 'y'
-                    },
-                    {
-                        label: 'Ingresos (K€)',
-                        data: [200, 480, 1200],
-                        backgroundColor: '#FF9D0080',
-                        borderColor: '#FF9D00',
-                        borderWidth: 1,
-                        borderRadius: 5,
-                        yAxisID: 'y1'
-                    },
-                    {
-                        label: 'Niños Beneficiados (K)',
-                        type: 'line',
-                        data: [5, 12, 30],
-                        borderColor: '#1688B1',
-                        borderWidth: 2,
-                        pointBackgroundColor: '#1688B1',
-                        fill: false,
-                        tension: 0.4,
-                        yAxisID: 'y1'
-                    }
-                ]
-            },
-            options: {
-                animation: {
-                    duration: 2000,
-                    easing: 'easeOutQuart'
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        position: 'left',
-                        title: {
-                            display: true,
-                            text: 'Instituciones',
-                            color: '#7021CC'
-                        },
-                        grid: {
-                            drawOnChartArea: false
-                        }
-                    },
-                    y1: {
-                        beginAtZero: true,
-                        position: 'right',
-                        title: {
-                            display: true,
-                            text: 'Ingresos (K€) / Niños (K)',
-                            color: '#FF9D00'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: 'bottom'
-                    },
-                    tooltip: {
-                        callbacks: {
-                            title: function(tooltipItems) {
-                                return tooltipItems[0].label;
-                            },
-                            label: function(context) {
-                                let label = context.dataset.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                if (context.parsed.y !== null) {
-                                    if (context.datasetIndex === 0) {
-                                        label += context.parsed.y + ' instituciones';
-                                    } else if (context.datasetIndex === 1) {
-                                        label += context.parsed.y + 'K€';
-                                    } else {
-                                        label += context.parsed.y + 'K niños';
-                                    }
-                                }
-                                return label;
-                            }
-                        }
-                    }
-                },
-                maintainAspectRatio: false
-            }
-        });
-
-        // Increment counter animation for ARPU bar
-        setTimeout(() => {
-            const arpuBar = document.querySelector('.arpu-bar');
-            arpuBar.style.width = '65%';
-        }, 1000);
-    });
-</script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 </body>
 </html>
+<script src='https://www.genspark.ai/slide-inner.js?_v=1'></script>
+<script id="html_badge_script1">
+    window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+        "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDt23lW4MnNxtM4dQU4JIIug%2BbtslG81%2FYvkGWpGhaLOXZrsscGLcrDkRiYEY%2Bz5vq01nJ5BRtJ38iDtjTnEa%2FYPvzOVBr1hktDBRvgiQ%2FKxzRQRYs9zHveTZINOLKbZPm5mOQ2P5J65SgNS8qIP3ch6lsY8OHmcMVIF207aycRW0HF1B3xZzPzOkszOOly4GSM1QWwjBHH3zxGVTGfrfV6sJDPa8mtoNonaN3n6oE4e%2Bad1rQc9L3as0eg%2Bs8tVGLwmSpbUINjPqOnOfZwlv%2FPnx4vefBSnK8IeDMG8q%2BPxmRUL9dWz%2Fsc0pOcCmMgvCNgzKwECZo8wtGeHWdOoVAtM%2Fw6NKPTAtydQjbpwWU2Wbs%2Fy%2B105lU9KFug0Nd%2F0PY0Fqs6NorVfuf31jSrzpzd1ANUgQEpijujXp05vxgoGzD9%2FXXdpVcRyXA0PhqqEemCDvGOVLWRROdQ0JCD9xHiBqzTIt4gTy04LK%2FHppASpvkeaQISOqwTMtvBJHmmCukdz9pcQzdY6RmaP3q5zN67u5GJ09u%2B8Aft9cXEQ9WUkEIALYBztCVnUF9cixCVrbzKXrupWz00TUTPAYMbgFfxDrUgwkXbWv5cBA%2B99er6B5NHGWGMsQflsysYNCq146bg%3D%3D";
+    window.__genspark_locale = "es-ES";
+    window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDt23lW4MnNxtM4dQU4JIIug+btslG81/YvkGWpGhaLOXZrsscGLcrDkRiYEY+z5vq01nJ5BRtJ38iDtjTnEa/YPvzOVBr1hktDBRvgiQ/KxzRQRYs9zHveTZINOLKbZPm5mOQ2P5J65SgNS8qIP3ch6lsY8OHmcMVIF207aycRW0HF1B3xZzPzOkszOOly4GSM1QWwjBHH3zxGVTGfrfV6sJDPa8mtoNonaN3n6oE4e+ad1rQc9L3as0eg+s8tVGLwmSpbUINjPqOnOfZwlv/Pnx4vefBSnK8IeDMG8q+PxmRUL9dWz/sc0pOcCmMgvCNgzKwECZo8wtGeHWdOoVAtM/w6NKPTAtydQjbpwWU2Wbs/y+105lU9KFug0Nd/0PY0Fqs6NorVfuf31jSrzpzd1ANUgQEpijujXp05vxgoGzD9/XXdpVcRyXA0PhqqEemCDvGOVLWRROdQ0JCD9xHiBqzTIt4gTy04LK/HppASpvkeaQISOqwTMtvBJHmmCukdz9pcQzdY6RmaP3q5zN67u5GJ09u+8Aft9cXEQ9WUkEIALYBztCVnUF9cixCVrbzKXrupWz00TUTPAYMbgFfxDrUgwkXbWv5cBA+99er6B5NHGWGMsQflsysYNCq146bg==";
+</script>
+
