@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación y Pilotos Actuales - Slide 18/26</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            color: #381066;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        .subtitle {
+            font-size: 18px;
+            color: #7021CC;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 0.2s;
+        }
+        .category-title {
+            display: flex;
+            align-items: center;
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #381066;
+            margin-bottom: 10px;
+            margin-top: 18px;
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease forwards;
+        }
+        .category-icon {
+            font-size: 24px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(112, 33, 204, 0.1);
+        }
+        .pilot-grid {
+            display: grid;
+            gap: 12px;
+        }
+        .hospitals-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .orgs-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .schools-grid, .families-grid {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .pilot-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 14px 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: relative;
+            height: 100%;
+            transition: all 0.3s ease;
+            border-left: 4px solid;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            cursor: pointer;
+        }
+        .pilot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
+        .pilot-card.highlighted {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+            z-index: 3;
+        }
+        .card-active {
+            border-left-color: #4CAF50;
+        }
+        .card-conversation {
+            border-left-color: #2196F3;
+        }
+        .card-starting {
+            border-left-color: #FFC107;
+        }
+        .card-proposal {
+            border-left-color: #FF9800;
+        }
+        .card-confirmed {
+            border-left-color: #9C27B0;
+        }
+        .card-demo {
+            border-left-color: #00BCD4;
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 15px;
+            color: #381066;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+        .pilot-card:hover .card-title {
+            color: #7021CC;
+        }
+        .card-details {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        .card-content {
+            padding: 14px 16px;
+            flex-grow: 1;
+        }
+        .status-badge {
+            position: relative;
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+            margin-top: 10px;
+            align-self: flex-start;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pilot-card:hover .status-badge {
+            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .badge-active {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #4CAF50;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+        .badge-conversation {
+            background-color: rgba(33, 150, 243, 0.1);
+            color: #2196F3;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+        }
+        .badge-starting {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #FFC107;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+        .badge-proposal {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: #FF9800;
+            border: 1px solid rgba(255, 152, 0, 0.3);
+        }
+        .badge-confirmed {
+            background-color: rgba(156, 39, 176, 0.1);
+            color: #9C27B0;
+            border: 1px solid rgba(156, 39, 176, 0.3);
+        }
+        .badge-demo {
+            background-color: rgba(0, 188, 212, 0.1);
+            color: #00BCD4;
+            border: 1px solid rgba(0, 188, 212, 0.3);
+        }
+        .status-badge i, .status-badge span {
+            margin-right: 4px;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(112, 33, 204, 0.05) 0%, rgba(255, 157, 0, 0.05) 100%);
+            border-radius: 12px;
+            border-left: 5px solid #7021CC;
+            padding: 16px 20px;
+            margin-top: 15px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(112, 33, 204, 0.08);
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 1.4s;
+        }
+        .highlight-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #381066;
+            margin-bottom: 12px;
+        }
+        .highlight-icon {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 24px;
+            color: rgba(112, 33, 204, 0.2);
+            animation: pulse 2s infinite;
+        }
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 8px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .highlight-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .highlight-item i {
+            color: #7021CC;
+            margin-right: 10px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .highlight-text {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.4;
+        }
+        .highlight-footer {
+            font-style: italic;
+            font-size: 12px;
+            color: #666;
+            margin-top: 12px;
+            text-align: right;
+        }
+        #map {
+            height: 320px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            margin-bottom: 15px;
+            z-index: 1;
+            border: 1px solid rgba(112, 33, 204, 0.1);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.6s;
+            transition: box-shadow 0.3s ease;
+        }
+        #map:hover {
+            box-shadow: 0 8px 20px rgba(112, 33, 204, 0.15);
+        }
+        .logo-small {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 24px;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 0.3s;
+        }
+        .logo-small .new {
+            color: #7021CC;
+        }
+        .logo-small .little {
+            color: #FF9D00;
+        }
+        .content-container {
+            display: flex;
+            gap: 25px;
+            height: calc(100% - 100px);
+            margin-top: 10px;
+        }
+        .left-column {
+            width: 58%;
+            overflow-y: auto;
+            padding-right: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(112, 33, 204, 0.2) transparent;
+            max-height: 560px;
+        }
+        .left-column::-webkit-scrollbar {
+            width: 5px;
+        }
+        .left-column::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .left-column::-webkit-scrollbar-thumb {
+            background-color: rgba(112, 33, 204, 0.2);
+            border-radius: 5px;
+        }
+        .right-column {
+            width: 42%;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-container {
+            margin-bottom: 20px;
+        }
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 0.9s;
+        }
+        .legend-item {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .legend-item:hover {
+            transform: scale(1.05);
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        .stats-box {
+            background: linear-gradient(135deg, rgba(255, 157, 0, 0.05) 0%, rgba(112, 33, 204, 0.05) 100%);
+            border-radius: 12px;
+            border-top: 4px solid #FF9D00;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 1.2s;
+        }
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #7021CC;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: #555;
+        }
+        .custom-popup {
+            background: white;
+            border-radius: 8px;
+            padding: 10px 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            border-left: 4px solid;
+            min-width: 200px;
+        }
+        .custom-popup.active {
+            border-left-color: #4CAF50;
+        }
+        .custom-popup.conversation {
+            border-left-color: #2196F3;
+        }
+        .custom-popup.starting {
+            border-left-color: #FFC107;
+        }
+        .custom-popup.confirmed {
+            border-left-color: #9C27B0;
+        }
+        .popup-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .popup-details {
+            font-size: 12px;
+            color: #555;
+        }
+        .popup-status {
+            font-weight: 500;
+            font-size: 11px;
+            margin-top: 5px;
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .leaflet-popup-content-wrapper {
+            padding: 0;
+            overflow: hidden;
+        }
+        .leaflet-popup-content {
+            margin: 0;
+            padding: 0;
+        }
+        .leaflet-container a.leaflet-popup-close-button {
+            top: 5px;
+            right: 5px;
+        }
+        .mascot-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mascot-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .mascot-img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-15px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes markerPulse {
+            0% { transform: scale(0.7); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .marker-animated {
+            animation: markerPulse 0.5s ease forwards;
+        }
+        .country-flag {
+            width: 16px;
+            height: 12px;
+            margin-right: 5px;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .popup-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide">
+    <div class="gradient-bg"></div>
+
+    <div class="logo-small">
+        <span class="new">New</span><span class="little">Little</span>
+    </div>
+
+    <h1>Validación y Pilotos Actuales</h1>
+    <p class="subtitle">Transformando la salud emocional infantil con evidencia y colaboración</p>
+
+    <div class="content-container">
+        <div class="left-column">
+            <!-- HOSPITALES -->
+            <div class="section-container">
+                <div class="category-title" style="animation-delay: 0.3s">
+                    <span class="category-icon">🏥</span> HOSPITALES
+                </div>
+                <div class="pilot-grid hospitals-grid">
+                    <!-- Hospital Civil de Guadalajara -->
+                    <div class="pilot-card card-active" data-location="guadalajara" style="animation-delay: 0.4s">
+                        <div class="card-title">Hospital Civil de Guadalajara (México)</div>
+                        <div class="card-details">Oncología pediátrica – Evaluación emocional y técnica.</div>
+                        <div class="status-badge badge-active">
+                            <span>✅</span> Piloto activo
+                        </div>
+                    </div>
+
+                    <!-- Hospital Sant Joan de Déu -->
+                    <div class="pilot-card card-conversation" data-location="barcelona" style="animation-delay: 0.5s">
+                        <div class="card-title">Hospital Sant Joan de Déu (Barcelona)</div>
+                        <div class="card-details">Implementación en pediatría.</div>
+                        <div class="status-badge badge-conversation">
+                            <span>🤝</span> Conversaciones avanzadas
+                        </div>
+                    </div>
+
+                    <!-- Hospital 12 de Octubre -->
+                    <div class="pilot-card card-starting" data-location="madrid" style="animation-delay: 0.6s">
+                        <div class="card-title">Hospital 12 de Octubre (Madrid)</div>
+                        <div class="card-details">Exploración clínica en entornos hospitalarios.</div>
+                        <div class="status-badge badge-starting">
+                            <span>🟡</span> Iniciando conversaciones
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ONGs / FUNDACIONES -->
+            <div class="section-container">
+                <div class="category-title" style="animation-delay: 0.6s">
+                    <span class="category-icon">🌍</span> ONGs / FUNDACIONES
+                </div>
+                <div class="pilot-grid orgs-grid">
+                    <!-- El Diván Verde -->
+                    <div class="pilot-card card-active" style="animation-delay: 0.7s">
+                        <div class="card-title">El Diván Verde</div>
+                        <div class="card-details">Psicología infantil – cuentos terapéuticos en contextos vulnerables.
+                        </div>
+                        <div class="status-badge badge-active">
+                            <span>✅</span> Piloto activo
+                        </div>
+                    </div>
+
+                    <!-- UNICEF -->
+                    <div class="pilot-card card-proposal" style="animation-delay: 0.8s">
+                        <div class="card-title">UNICEF – Emergencia DANA (España)</div>
+                        <div class="card-details">Apoyo emocional tras desastres naturales.</div>
+                        <div class="status-badge badge-proposal">
+                            <span>🟠</span> Propuesta avanzada
+                        </div>
+                    </div>
+
+                    <!-- Fundación Sí -->
+                    <div class="pilot-card card-confirmed" data-location="buenosaires" style="animation-delay: 0.9s">
+                        <div class="card-title">Fundación Sí (Argentina)</div>
+                        <div class="card-details">Infancia vulnerable y contextos sociales extremos.</div>
+                        <div class="status-badge badge-confirmed">
+                            <span>✅</span> Confirmación recibida
+                        </div>
+                    </div>
+
+                    <!-- Fundación Ronald McDonald -->
+                    <div class="pilot-card card-confirmed" style="animation-delay: 1.0s">
+                        <div class="card-title">Fundación Ronald McDonald (España)</div>
+                        <div class="card-details">Casas Ronald – acompañamiento emocional en entornos hospitalarios.
+                        </div>
+                        <div class="status-badge badge-confirmed">
+                            <span>✅</span> Confirmación recibida
+                        </div>
+                    </div>
+
+                    <!-- Fundación DIF Zapopan -->
+                    <div class="pilot-card card-proposal" data-location="zapopan" style="animation-delay: 1.1s">
+                        <div class="card-title">Fundación DIF Zapopan (México)</div>
+                        <div class="card-details">Integración institucional en programas de salud infantil.</div>
+                        <div class="status-badge badge-proposal">
+                            <span>📩</span> Plan de acción enviado
+                        </div>
+                    </div>
+
+                    <!-- Fundación Kupu Kupu -->
+                    <div class="pilot-card card-conversation" data-location="bali" style="animation-delay: 1.2s">
+                        <div class="card-title">Fundación Kupu Kupu (Indonesia)</div>
+                        <div class="card-details">Infancia en riesgo – primera aproximación en Bali.</div>
+                        <div class="status-badge badge-conversation">
+                            <span>🤝</span> Conversaciones avanzadas
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ESCUELAS -->
+            <div class="section-container">
+                <div class="category-title" style="animation-delay: 0.9s">
+                    <span class="category-icon">🎓</span> ESCUELAS
+                </div>
+                <div class="pilot-grid schools-grid">
+                    <!-- Colegios Internacionales SEK -->
+                    <div class="pilot-card card-demo" style="animation-delay: 1.3s">
+                        <div class="card-title">Colegios Internacionales SEK</div>
+                        <div class="card-details">Exploración de integración curricular y bienestar estudiantil.</div>
+                        <div class="status-badge badge-demo">
+                            <span>📽️</span> Demo realizada + propuesta
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAMILIAS -->
+            <div class="section-container">
+                <div class="category-title" style="animation-delay: 1.2s">
+                    <span class="category-icon">👨‍👩‍👧‍👦</span> FAMILIAS
+                </div>
+                <div class="pilot-grid families-grid">
+                    <!-- Grupo de beta-testers -->
+                    <div class="pilot-card" style="animation-delay: 1.4s">
+                        <div class="card-title">Grupo de beta-testers (España, LATAM)</div>
+                        <div class="card-details">Validación de experiencia doméstica y narrativa personalizada.</div>
+                        <div class="status-badge badge-active">
+                            <span>👪</span> 60+ familias
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <!-- Statistics Box -->
+            <div class="stats-box">
+                <div class="stat-item">
+                    <div class="stat-value" id="active-pilots-count">12</div>
+                    <div class="stat-label">Pilotos Totales</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="active-countries-count">4</div>
+                    <div class="stat-label">Países Alcanzados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">60+</div>
+                    <div class="stat-label">Familias Beta-testers</div>
+                </div>
+            </div>
+
+            <!-- World Map -->
+            <div id="map"></div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <div class="legend-item" data-status="active">
+                    <div class="legend-dot" style="background-color: #4CAF50;"></div>
+                    <span>Piloto activo</span>
+                </div>
+                <div class="legend-item" data-status="conversation">
+                    <div class="legend-dot" style="background-color: #2196F3;"></div>
+                    <span>Conversaciones avanzadas</span>
+                </div>
+                <div class="legend-item" data-status="starting">
+                    <div class="legend-dot" style="background-color: #FFC107;"></div>
+                    <span>Iniciando conversaciones</span>
+                </div>
+                <div class="legend-item" data-status="confirmed">
+                    <div class="legend-dot" style="background-color: #9C27B0;"></div>
+                    <span>Confirmación recibida</span>
+                </div>
+            </div>
+
+            <!-- Paper Highlight Box -->
+            <div class="highlight-box">
+                <div class="highlight-title">Propuesta de paper científico - Hospital Civil de Guadalajara</div>
+                <div class="highlight-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="highlight-text">
+                        <strong>Hallazgo preliminar:</strong> Aumento significativo de oxitocina tras la intervención
+                        narrativa personalizada
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-brain"></i>
+                    <div class="highlight-text">
+                        <strong>Hallazgo preliminar:</strong> Mejor regulación del trauma en entornos hospitalarios
+                        pediátricos
+                    </div>
+                </div>
+
+                <div class="highlight-footer">
+                    En colaboración con el equipo de oncología pediátrica del Hospital Civil de Guadalajara
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar el mapa
+        const map = L.map('map', {
+            center: [20, 0], // Centro aproximado global
+            zoom: 2,
+            worldCopyJump: true
+        });
+
+        // Cargar el mapa base de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Añadir marcadores con sus ubicaciones
+        const markers = [
+            {
+                coords: [20.6767, -103.3475],
+                title: 'Hospital Civil de Guadalajara (México)',
+                status: 'active'
+            },
+            {
+                coords: [41.3809, 2.1228],
+                title: 'Hospital Sant Joan de Déu (Barcelona)',
+                status: 'conversation'
+            },
+            {
+                coords: [40.3911, -3.6919],
+                title: 'Hospital 12 de Octubre (Madrid)',
+                status: 'starting'
+            },
+            {
+                coords: [-34.6037, -58.3816],
+                title: 'Fundación Sí (Buenos Aires, Argentina)',
+                status: 'confirmed'
+            },
+            {
+                coords: [35.6895, 139.6917],
+                title: 'Fundación Kupu Kupu (Bali, Indonesia)',
+                status: 'conversation'
+            },
+            {
+                coords: [20.6597, -103.3496],
+                title: 'Fundación DIF Zapopan (México)',
+                status: 'proposal'
+            }
+        ];
+
+        const statusColors = {
+            active: '#4CAF50',
+            conversation: '#2196F3',
+            starting: '#FFC107',
+            confirmed: '#9C27B0',
+            proposal: '#FF9800'
+        };
+
+        markers.forEach(markerData => {
+            const marker = L.circleMarker(markerData.coords, {
+                color: statusColors[markerData.status] || '#555',
+                fillColor: statusColors[markerData.status] || '#555',
+                fillOpacity: 0.8,
+                radius: 8
+            }).addTo(map);
+
+            marker.bindPopup(`<strong>${markerData.title}</strong>`);
+        });
+
+        // Ajustar vista a marcadores
+        const group = new L.featureGroup(markers.map(m => L.marker(m.coords)));
+        map.fitBounds(group.getBounds().pad(0.2));
+    });
+</script>
