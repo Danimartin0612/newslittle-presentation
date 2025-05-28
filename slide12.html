@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Potencial - Newslittle</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.7/dist/countUp.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            color: #381066;
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        .logo-small {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 24px;
+            font-weight: bold;
+            animation: fadeInRight 0.5s ease forwards;
+        }
+        .logo-small .new {
+            color: #7021CC;
+        }
+        .logo-small .little {
+            color: #FF9D00;
+        }
+        .market-stat {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: calc(var(--delay) * 0.2s);
+            transition: all 0.3s ease;
+        }
+        .market-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(112, 33, 204, 0.3);
+        }
+        .market-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: #7021CC;
+        }
+        .stat-value {
+            font-size: 44px;
+            font-weight: 700;
+            color: #381066;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #7021CC, #FF9D00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stat-label {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.4;
+        }
+        .chart-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding: 20px;
+            height: 300px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.8s;
+            transition: all 0.3s ease;
+        }
+        .chart-container:hover {
+            box-shadow: 0 8px 20px rgba(112, 33, 204, 0.2);
+        }
+        .source-text {
+            font-size: 11px;
+            color: #777;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        .source-link {
+            color: #7021CC;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .source-link:hover {
+            color: #FF9D00;
+        }
+        .highlight {
+            color: #7021CC;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .opportunity-text:hover .highlight {
+            color: #FF9D00;
+            text-decoration: underline;
+        }
+        .opportunity-section {
+            background: linear-gradient(135deg, rgba(112, 33, 204, 0.05) 0%, rgba(255, 157, 0, 0.05) 100%);
+            border-radius: 12px;
+            padding: 20px 25px;
+            border-left: 5px solid #FF9D00;
+            opacity: 0;
+            animation: fadeInRight 0.8s ease forwards;
+            animation-delay: 1s;
+            transition: all 0.3s ease;
+        }
+        .opportunity-section:hover {
+            box-shadow: 0 8px 20px rgba(255, 157, 0, 0.2);
+            transform: translateX(5px);
+        }
+        .opportunity-header {
+            font-size: 20px;
+            font-weight: 600;
+            color: #381066;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .opportunity-header i {
+            margin-right: 12px;
+            color: #FF9D00;
+            transition: transform 0.3s ease;
+        }
+        .opportunity-section:hover .opportunity-header i {
+            transform: rotate(15deg);
+        }
+        .opportunity-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: calc(1.2s + var(--delay) * 0.15s);
+        }
+        .opportunity-item:hover {
+            transform: translateX(5px);
+        }
+        .opportunity-item i {
+            color: #7021CC;
+            margin-right: 12px;
+            margin-top: 3px;
+            transition: all 0.3s ease;
+        }
+        .opportunity-item:hover i {
+            transform: scale(1.2);
+            color: #FF9D00;
+        }
+        .opportunity-text {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.4;
+        }
+        .reference-tag {
+            background-color: rgba(112, 33, 204, 0.1);
+            border-radius: 4px;
+            padding: 2px 6px;
+            margin-left: 5px;
+            font-size: 10px;
+            color: #7021CC;
+            font-weight: 500;
+            vertical-align: super;
+            transition: all 0.2s ease;
+        }
+        .reference-tag:hover {
+            background-color: rgba(112, 33, 204, 0.2);
+            transform: translateY(-2px);
+        }
+        .growth-indicator {
+            position: absolute;
+            right: 60px;
+            top: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 2s;
+        }
+        .growth-arrow {
+            color: #FF9D00;
+            font-size: 28px;
+            animation: bounce 2s infinite;
+            text-shadow: 0 0 10px rgba(255, 157, 0, 0.5);
+        }
+        .growth-text {
+            color: #7021CC;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: center;
+            max-width: 100px;
+        }
+        .mascot-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mascot-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .mascot-img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        .enhanced-tooltip {
+            background-color: white !important;
+            border-radius: 8px !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+            border: 1px solid rgba(112, 33, 204, 0.2) !important;
+            padding: 12px !important;
+            color: #333 !important;
+            font-size: 13px !important;
+            max-width: 300px !important;
+        }
+        .tooltip-title {
+            font-weight: 600 !important;
+            color: #381066 !important;
+            border-bottom: 1px solid rgba(112, 33, 204, 0.1) !important;
+            margin-bottom: 8px !important;
+            padding-bottom: 4px !important;
+        }
+        .tooltip-detail {
+            font-size: 11px !important;
+            color: #666 !important;
+            margin-top: 5px !important;
+        }
+        .tooltip-highlight {
+            font-weight: 600 !important;
+            color: #7021CC !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="gradient-bg"></div>
+
+        <div class="logo-small">
+            <span class="new">New</span><span class="little">Little</span>
+        </div>
+
+        <h1>Mercado Potencial</h1>
+
+        <div class="grid grid-cols-3 gap-5 mb-6">
+            <div class="market-stat" style="--delay: 1">
+                <div class="stat-value" id="stat1">$100B+</div>
+                <div class="stat-label">Mercado global de salud mental digital (proyección próxima década)</div>
+                <div class="source-text">Fuente: <a href="https://www.skyquestt.com/report/mental-health-market" target="_blank" class="source-link">SkyQuest</a>, "Análisis del mercado de salud mental: tamaño, participación y tendencias hasta 2032" (2025)</div>
+            </div>
+            <div class="market-stat" style="--delay: 2">
+                <div class="stat-value" id="stat2">20%</div>
+                <div class="stat-label">Crecimiento anual en salud mental infantil digital</div>
+                <div class="source-text">Fuente: <a href="https://www.marketresearchfuture.com/reports/us-digital-mental-health-market-17784" target="_blank" class="source-link">Market Research Future</a>, "Tamaño del mercado de salud mental digital en EE.UU." (2025)</div>
+            </div>
+            <div class="market-stat" style="--delay: 3">
+                <div class="stat-value" id="stat3">&lt;5%</div>
+                <div class="stat-label">Coste marginal por unidad adicional</div>
+                <div class="source-text">Fuente: <a href="https://newslittle.es" target="_blank" class="source-link">Newslittle</a>, "Informe de escalabilidad y costes" (2025)</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+            <div class="chart-container">
+                <canvas id="marketGrowthChart"></canvas>
+                <div class="source-text">
+                    Fuentes:
+                    <a href="https://www.alliedmarketresearch.com/edtech-market-A323685" target="_blank" class="source-link">Allied Market Research</a>, "Educational Technology Market Forecast 2025-2034",
+                    <a href="https://www.businessresearchinsights.com/es/market-reports/apps-for-kids-market-122277" target="_blank" class="source-link">Business Research Insights</a>,
+                    <a href="https://www.technavio.com/report/edtech-market-industry-analysis" target="_blank" class="source-link">Technavio</a> (2025)
+                </div>
+
+                <div class="growth-indicator">
+                    <div class="growth-arrow">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="growth-text">Crecimiento exponencial</div>
+                </div>
+            </div>
+
+            <div class="opportunity-section">
+                <div class="opportunity-header">
+                    <i class="fas fa-rocket"></i> Oportunidad de Mercado B2B para Newslittle
+                </div>
+                <div class="opportunity-item" style="--delay: 1">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="opportunity-text">
+                        <span class="highlight">Modelo B2B enfocado</span> en colegios, centros terapéuticos e instituciones educativas con acceso a +40M niños de 1 a 10 años en EE.UU. y +20M en México
+                        <a href="https://www.census.gov/newsroom/press-releases/2023/2020-census-demographic-profile-and-dhc/2020-census-demographic-profile-and-dhc-spanish.html" target="_blank" class="reference-tag">Ref.1</a>
+                    </div>
+                </div>
+                <div class="opportunity-item" style="--delay: 2">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="opportunity-text">
+                        <span class="highlight">Mercado global de salud mental infantil</span> proyectado en $40B para 2030, creciendo al 14.5% anual
+                        <a href="https://www.fortunebusinessinsights.com/mental-health-market-106006" target="_blank" class="reference-tag">Ref.2</a>
+                    </div>
+                </div>
+                <div class="opportunity-item" style="--delay: 3">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="opportunity-text">
+                        <span class="highlight">Penetración actual</span> de soluciones tecnológicas para salud mental infantil es menor al 5% - amplio potencial de crecimiento
+                        <a href="https://www.kingsresearch.com/es/kids-educational-games-market-8" target="_blank" class="reference-tag">Ref.3</a>
+                    </div>
+                </div>
+                <div class="opportunity-item" style="--delay: 4">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="opportunity-text">
+                        <span class="highlight">Creciente demanda</span> de soluciones personalizadas para niños con necesidades especiales - mercado de $25B en 2026
+                        <a href="https://www.kingsresearch.com/es/kids-educational-games-market-8" target="_blank" class="reference-tag">Ref.4</a>
+                    </div>
+                </div>
+                <div class="opportunity-item" style="--delay: 5">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="opportunity-text">
+                        <span class="highlight">Ventaja competitiva única:</span> combinación de ciencia validada, IA avanzada, personalización instantánea y enfoque B2B
+                        <a href="https://newslittle.es" target="_blank" class="reference-tag">Newslittle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Función para iniciar las animaciones cuando la página esté cargada
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar los contadores
+            setTimeout(() => {
+                const options1 = {
+                    prefix: '$',
+                    suffix: 'B+',
+                    separator: ',',
+                    duration: 2.5,
+                    startVal: 0,
+                    decimalPlaces: 0
+                };
+
+                const options2 = {
+                    suffix: '%',
+                    duration: 2,
+                    startVal: 0,
+                    decimalPlaces: 0
+                };
+
+                const options3 = {
+                    prefix: '<',
+                    suffix: '%',
+                    duration: 1.5,
+                    startVal: 0,
+                    decimalPlaces: 0
+                };
+
+                const stat1 = new countUp.CountUp('stat1', 100, options1);
+                const stat2 = new countUp.CountUp('stat2', 20, options2);
+                const stat3 = new countUp.CountUp('stat3', 5, options3);
+
+                stat1.start();
+                setTimeout(() => stat2.start(), 500);
+                setTimeout(() => stat3.start(), 1000);
+            }, 1000);
+
+            // Configurar el gráfico de crecimiento del mercado
+            const ctx = document.getElementById('marketGrowthChart').getContext('2d');
+
+            const gradient = ctx.createLinearGradient(0, 0, 0, 250);
+            gradient.addColorStop(0, 'rgba(112, 33, 204, 0.7)');
+            gradient.addColorStop(1, 'rgba(112, 33, 204, 0.1)');
+
+            const gradient2 = ctx.createLinearGradient(0, 0, 0, 250);
+            gradient2.addColorStop(0, 'rgba(255, 157, 0, 0.9)');
+            gradient2.addColorStop(1, 'rgba(255, 157, 0, 0.2)');
+
+            // Datos para los tooltips enriquecidos
+            const tooltipData = {
+                '2022': 'Año base: Mercado estable tras la pandemia',
+                '2023': 'Crecimiento moderado post-pandemia',
+                '2024': 'Aceleración del crecimiento por mayor adopción digital',
+                '2025': 'Año proyectado actual: Expansión significativa esperada',
+                '2026': 'Punto de inflexión - Adopción masiva de tecnologías digitales en educación',
+                '2027': 'Fase de consolidación del mercado',
+                '2028': 'Fase de madurez temprana para tecnologías avanzadas en educación y salud mental',
+                '2029': 'Integración profunda de IA y personalización',
+                '2030': 'Mercado maduro con plena integración en sistemas educativos'
+            };
+
+            // Highlights para puntos específicos
+            const highlightPoints = {
+                '2025': 'Punto clave de entrada para NewLittle - Oportunidad óptima',
+                '2027': 'Fase de escalabilidad internacional para NewLittle',
+                '2030': 'Mercado consolidado - Posicionamiento estratégico para liderazgo'
+            };
+
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2022', '2023', '2024', '2025', '2026', '2027', '2028', '2029', '2030'],
+                    datasets: [
+                        {
+                            label: 'EdTech Global (Miles de Millones $)',
+                            data: [180, 200, 215, 252, 292, 338, 392, 455, 527],
+                            borderColor: '#7021CC',
+                            backgroundColor: gradient,
+                            borderWidth: 3,
+                            fill: true,
+                            pointRadius: 4,
+                            pointBorderWidth: 2,
+                            pointBackgroundColor: 'white',
+                            tension: 0.4,
+                            yAxisID: 'y',
+                            pointHoverRadius: 8,
+                            pointHoverBorderColor: '#7021CC',
+                            pointHoverBorderWidth: 3,
+                            pointHoverBackgroundColor: 'white'
+                        },
+                        {
+                            label: 'Apps Infantiles (Miles de Millones $)',
+                            data: [1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.6, 5.2, 5.8],
+                            borderColor: '#FF9D00',
+                            backgroundColor: gradient2,
+                            borderWidth: 5,
+                            fill: true,
+                            pointRadius: 6,
+                            pointBorderWidth: 2,
+                            pointBackgroundColor: 'white',
+                            tension: 0.4,
+                            yAxisID: 'y1',
+                            borderDash: [],
+                            order: 0,
+                            zIndex: 10,
+                            pointHoverRadius: 10,
+                            pointHoverBorderColor: '#FF9D00',
+                            pointHoverBorderWidth: 3,
+                            pointHoverBackgroundColor: 'white',
+                            pointStyle: function(context) {
+                                const index = context.dataIndex;
+                                const label = context.chart.data.labels[index];
+                                // Destacar puntos clave con una estrella
+                                if (label === '2025' || label === '2027' || label === '2030') {
+                                    return 'star';
+                                }
+                                return 'circle';
+                            }
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 2000,
+                        easing: 'easeOutCubic',
+                        delay: function(context) {
+                            return context.dataIndex * 100 + context.datasetIndex * 300;
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                boxWidth: 12,
+                                usePointStyle: true,
+                                padding: 20,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Crecimiento Proyectado del Mercado 2022-2030',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
+                            },
+                            padding: {
+                                bottom: 15
+                            },
+                            color: '#381066'
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            titleColor: '#381066',
+                            bodyColor: '#333',
+                            borderColor: '#7021CC',
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: true,
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                title: function(context) {
+                                    return 'Año ' + context[0].label;
+                                },
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += '$' + context.parsed.y + ' mil millones';
+                                    }
+                                    return label;
+                                },
+                                afterBody: function(context) {
+                                    const year = context[0].label;
+                                    let result = [];
+
+                                    // Añadir descripción general del año
+                                    if (tooltipData[year]) {
+                                        result.push('');
+                                        result.push(tooltipData[year]);
+                                    }
+
+                                    // Añadir punto destacado si existe
+                                    if (highlightPoints[year]) {
+                                        result.push('');
+                                        result.push('★ ' + highlightPoints[year]);
+                                    }
+
+                                    return result;
+                                }
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
+                            titleFont: {
+                                size: 16,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    weight: function(context) {
+                                        const index = context.index;
+                                        const label = context.chart.data.labels[index];
+                                        // Destacar años clave
+                                        if (label === '2025' || label === '2027' || label === '2030') {
+                                            return 'bold';
+                                        }
+                                        return 'normal';
+                                    }
+                                },
+                                color: function(context) {
+                                    const index = context.index;
+                                    const label = context.chart.data.labels[index];
+                                    // Destacar años clave
+                                    if (label === '2025') {
+                                        return '#7021CC';
+                                    } else if (label === '2027' || label === '2030') {
+                                        return '#FF9D00';
+                                    }
+                                    return '#666';
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                borderDash: [3, 3]
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value;
+                                }
+                            },
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'EdTech Global'
+                            }
+                        },
+                        y1: {
+                            beginAtZero: true,
+                            position: 'right',
+                            grid: {
+                                display: false,
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value;
+                                },
+                                color: '#FF9D00',
+                                font: {
+                                    weight: 'bold'
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Apps Infantiles',
+                                color: '#FF9D00'
+                            }
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

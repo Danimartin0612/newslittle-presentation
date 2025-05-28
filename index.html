@@ -18,11 +18,43 @@
     height: 100vh;
     border: none;
   }
+
+  .nav-button {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(112, 33, 204, 0.5);
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    user-select: none;
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+  .nav-button:hover {
+    background: rgba(112, 33, 204, 0.8);
+  }
+  .nav-button.left {
+    left: 10px;
+  }
+  .nav-button.right {
+    right: 10px;
+  }
 </style>
 </head>
 <body>
 
 <iframe id="slide-iframe" src="slide1.html"></iframe>
+
+<!-- Botones de navegación -->
+<div class="nav-button left" onclick="prevSlide()">&#x25C0;</div>
+<div class="nav-button right" onclick="nextSlide()">&#x25B6;</div>
 
 <script>
   const slides = [
@@ -41,14 +73,23 @@
     iframe.src = slides[index];
   }
 
+  // Botones de navegación
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
   // Navegación con flechas de teclado
   document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
+      nextSlide();
     } else if (event.key === "ArrowLeft") {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
+      prevSlide();
     }
   });
 
@@ -68,14 +109,10 @@
   function handleGesture() {
     const threshold = 50; // px mínimos para detectar swipe
     if (touchEndX < touchStartX - threshold) {
-      // swipe izquierdo: siguiente slide
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
+      nextSlide();
     }
     if (touchEndX > touchStartX + threshold) {
-      // swipe derecho: slide anterior
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
+      prevSlide();
     }
   }
 
