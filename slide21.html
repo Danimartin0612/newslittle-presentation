@@ -1,222 +1,561 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roadmap Estratégico - Slide 19/26</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  .gradient-bg {
-    background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-  h1 {
-    font-family: 'Merriweather', serif;
-    color: #381066;
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  .subtitle {
-    font-size: 20px;
-    color: #7021CC;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .timeline-container {
-    margin-bottom: 40px;
-    height: 400px; /* Aumentado para más visibilidad */
-    position: relative;
-  }
-  .sections-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-    margin-bottom: 20px;
-  }
-  .section-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    padding: 25px;
-    border-left: 5px solid;
-  }
-  .strategic-card { border-color: #7021CC; }
-  .success-card { border-color: #FF9D00; }
-  .section-title {
-    font-size: 22px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-  }
-  .section-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    font-size: 18px;
-  }
-  .strategic-icon { background-color: rgba(112, 33, 204, 0.1); color: #7021CC; }
-  .success-icon { background-color: rgba(255, 157, 0, 0.1); color: #FF9D00; }
-  .objective-content, .factor-content {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.5;
-  }
-  .objective-content strong, .factor-content strong {
-    color: #381066;
-    font-weight: 700;
-  }
-  .objective-item, .factor-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 12px;
-    padding: 10px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-  .objective-item:hover, .factor-item:hover {
-    background-color: rgba(112, 33, 204, 0.05);
-    transform: translateX(5px);
-  }
-  .objective-icon { margin-right: 10px; color: #7021CC; margin-top: 2px; }
-  .factor-icon { margin-right: 10px; color: #FF9D00; margin-top: 2px; }
-  .logo-small {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  .logo-small .new { color: #7021CC; }
-  .logo-small .little { color: #FF9D00; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Estratégico - Slide 19/26</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        h1 {
+            font-family: 'Merriweather', serif;
+            color: #381066;
+            font-size: 38px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInDown 0.8s ease forwards;
+        }
+        .subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            color: #7021CC;
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.2s;
+        }
+        .timeline-container {
+            margin-bottom: 30px;
+            height: 200px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards 0.4s;
+        }
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        .strategic-card {
+            border-color: #7021CC;
+            animation-delay: 0.6s;
+        }
+        .success-card {
+            border-color: #FF9D00;
+            animation-delay: 0.8s;
+        }
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+        .strategic-icon {
+            background-color: rgba(112, 33, 204, 0.1);
+            color: #7021CC;
+        }
+        .success-icon {
+            background-color: rgba(255, 157, 0, 0.1);
+            color: #FF9D00;
+        }
+        .objective-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .objective-item:hover {
+            background-color: rgba(112, 33, 204, 0.05);
+            transform: translateX(5px);
+        }
+        .objective-icon {
+            margin-right: 10px;
+            color: #7021CC;
+            margin-top: 2px;
+        }
+        .objective-content strong {
+            color: #381066;
+            font-weight: 600;
+        }
+        .objective-content {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.4;
+        }
+        .factor-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .factor-item:hover {
+            background-color: rgba(255, 157, 0, 0.05);
+            transform: translateX(5px);
+        }
+        .factor-icon {
+            margin-right: 10px;
+            color: #FF9D00;
+            margin-top: 2px;
+        }
+        .factor-content strong {
+            color: #381066;
+            font-weight: 600;
+        }
+        .factor-content {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.4;
+        }
+        .milestone-point {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .milestone-point:hover {
+            transform: scale(1.2);
+        }
+        .milestone-point.purple {
+            color: #7021CC;
+        }
+        .milestone-point.orange {
+            color: #FF9D00;
+        }
+        .milestone-point.blue {
+            color: #1688B1;
+        }
+        .milestone-label {
+            position: absolute;
+            font-size: 12px;
+            text-align: center;
+            width: 120px;
+            font-weight: 500;
+        }
+        .kpi-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .kpi-badge-purple {
+            background-color: rgba(112, 33, 204, 0.1);
+            color: #7021CC;
+        }
+        .kpi-badge-orange {
+            background-color: rgba(255, 157, 0, 0.1);
+            color: #FF9D00;
+        }
+        .kpi-badge-blue {
+            background-color: rgba(22, 136, 177, 0.1);
+            color: #1688B1;
+        }
+
+        .mascot-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mascot-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .mascot-img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+        }
+        .timeline-year {
+            position: absolute;
+            font-weight: 600;
+            font-size: 14px;
+            color: #381066;
+        }
+        .timeline-quarter {
+            position: absolute;
+            font-size: 12px;
+            color: #555;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
 <div class="slide">
-  <div class="gradient-bg"></div>
-  <div class="logo-small">
-    <span class="new">New</span><span class="little">Little</span>
-  </div>
+    <div class="gradient-bg"></div>
 
-  <h1>Roadmap Estratégico</h1>
-  <div class="subtitle">Visión global para consolidación y crecimiento (6-12 meses)</div>
-
-  <div class="timeline-container">
-    <canvas id="roadmapChart"></canvas>
-  </div>
-
-  <div class="sections-grid">
-    <!-- Objetivos estratégicos -->
-    <div class="section-card strategic-card">
-      <div class="section-title">
-        <div class="section-icon strategic-icon"><i class="fas fa-bullseye"></i></div>
-        Objetivos estratégicos
-      </div>
-      <div class="objective-item"><i class="fas fa-check-circle objective-icon"></i><div class="objective-content"><strong>Expansión B2B:</strong> 8 contratos institucionales</div></div>
-      <div class="objective-item"><i class="fas fa-check-circle objective-icon"></i><div class="objective-content"><strong>Crecimiento B2C:</strong> 2.500 suscriptores activos</div></div>
-      <div class="objective-item"><i class="fas fa-check-circle objective-icon"></i><div class="objective-content"><strong>Contenido editorial:</strong> Biblioteca de 30+ cuentos validados</div></div>
-      <div class="objective-item"><i class="fas fa-check-circle objective-icon"></i><div class="objective-content"><strong>Evidencia clínica:</strong> Publicación de paper científico</div></div>
+    <div class="logo-small">
+        <span class="new">New</span><span class="little">Little</span>
     </div>
 
-    <!-- Factores críticos de éxito -->
-    <div class="section-card success-card">
-      <div class="section-title">
-        <div class="section-icon success-icon"><i class="fas fa-key"></i></div>
-        Factores críticos de éxito
-      </div>
-      <div class="factor-item"><i class="fas fa-star factor-icon"></i><div class="factor-content"><strong>Calidad psicológica:</strong> Mantener estándares clínicos</div></div>
-      <div class="factor-item"><i class="fas fa-star factor-icon"></i><div class="factor-content"><strong>Tiempo de producción:</strong> Reducir ciclo a 72 horas</div></div>
-      <div class="factor-item"><i class="fas fa-star factor-icon"></i><div class="factor-content"><strong>Capital humano:</strong> Ampliar equipo técnico y clínico</div></div>
-      <div class="factor-item"><i class="fas fa-star factor-icon"></i><div class="factor-content"><strong>Financiación:</strong> Asegurar ronda de inversión</div></div>
+    <h1>Roadmap Estratégico</h1>
+    <div class="subtitle">Visión global para consolidación y crecimiento (6-12 meses)</div>
+
+    <div class="timeline-container">
+        <canvas id="roadmapChart"></canvas>
     </div>
-  </div>
+
+    <div class="sections-grid">
+        <!-- Objetivos estratégicos -->
+        <div class="section-card strategic-card">
+            <div class="section-title">
+                <div class="section-icon strategic-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="section-title-text">Objetivos estratégicos</div>
+            </div>
+
+            <div class="objective-item">
+                <i class="fas fa-check-circle objective-icon"></i>
+                <div class="objective-content">
+                    <strong>Expansión B2B:</strong> 8 contratos institucionales con centros médicos y educativos
+                    <span class="kpi-badge kpi-badge-purple">Q3 2025</span>
+                </div>
+            </div>
+
+            <div class="objective-item">
+                <i class="fas fa-check-circle objective-icon"></i>
+                <div class="objective-content">
+                    <strong>Crecimiento B2C:</strong> 2.500 suscriptores activos y 500 cuentos físicos vendidos
+                    <span class="kpi-badge kpi-badge-blue">Q4 2025</span>
+                </div>
+            </div>
+
+            <div class="objective-item">
+                <i class="fas fa-check-circle objective-icon"></i>
+                <div class="objective-content">
+                    <strong>Contenido editorial:</strong> Biblioteca de 30+ cuentos terapéuticos validados
+                    <span class="kpi-badge kpi-badge-orange">Continuo</span>
+                </div>
+            </div>
+
+            <div class="objective-item">
+                <i class="fas fa-check-circle objective-icon"></i>
+                <div class="objective-content">
+                    <strong>Evidencia clínica:</strong> Publicación de paper científico y medición de resultados
+                    <span class="kpi-badge kpi-badge-purple">Q2 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Factores críticos de éxito -->
+        <div class="section-card success-card">
+            <div class="section-title">
+                <div class="section-icon success-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <div class="section-title-text">Factores críticos de éxito</div>
+            </div>
+
+            <div class="factor-item">
+                <i class="fas fa-star factor-icon"></i>
+                <div class="factor-content">
+                    <strong>Calidad psicológica:</strong> Mantener estándares clínicos
+                    que se escala
+                </div>
+            </div>
+
+            <div class="factor-item">
+                <i class="fas fa-star factor-icon"></i>
+                <div class="factor-content">
+                    <strong>Tiempo de producción:</strong>  Reducir ciclo a 72 horas Reducir ciclo a 72 horas
+
+                </div>
+            </div>
+
+            <div class="factor-item">
+                <i class="fas fa-star factor-icon"></i>
+                <div class="factor-content">
+                    <strong>Capital humano:</strong> Ampliar equipo técnico y clínico
+                </div>
+            </div>
+
+            <div class="factor-item">
+                <i class="fas fa-star factor-icon"></i>
+                <div class="factor-content">
+                    <strong>Financiación:</strong> Asegurar ronda de inversión (SAFE)
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const ctx = document.getElementById('roadmapChart').getContext('2d');
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('roadmapChart').getContext('2d');
 
-    const months = ['Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'];
+        // Register plugin for datalabels
+        Chart.register(ChartDataLabels);
 
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: months,
-        datasets: [
-          {
-            label: 'Desarrollo tecnológico',
-            data: [40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95],
-            borderColor: '#7021CC',
-            backgroundColor: 'rgba(112, 33, 204, 0.1)',
-            pointBackgroundColor: '#7021CC',
-            tension: 0.4,
-            fill: true
-          },
-          {
-            label: 'Validación clínica',
-            data: [10, 15, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75],
-            borderColor: '#FF9D00',
-            backgroundColor: 'rgba(255, 157, 0, 0.1)',
-            pointBackgroundColor: '#FF9D00',
-            tension: 0.4,
-            fill: true
-          },
-          {
-            label: 'Expansión comercial',
-            data: [5, 10, 15, 25, 30, 40, 50, 55, 60, 65, 70, 80],
-            borderColor: '#1688B1',
-            backgroundColor: 'rgba(22, 136, 177, 0.1)',
-            pointBackgroundColor: '#1688B1',
-            tension: 0.4,
-            fill: true
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: { font: { family: 'Poppins' } }
-          },
-          tooltip: {
-            enabled: true,
-            callbacks: {
-              label: function(context) {
-                return context.dataset.label + ': ' + context.parsed.y + '%';
-              }
+        const months = ['Jul 2025', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic', 'Ene 2026', 'Feb', 'Mar', 'Abr', 'May', 'Jun'];
+
+        const milestones = [
+            { x: 0, y: 20, label: 'Inicio fase B2B', color: '#7021CC', radius: 8 },
+            { x: 2, y: 70, label: '10 cuentos validados', color: '#FF9D00', radius: 8 },
+            { x: 4, y: 40, label: 'Lanzamiento app móvil', color: '#1688B1', radius: 8 },
+            { x: 6, y: 80, label: 'Inicio ronda inversión', color: '#7021CC', radius: 10 },
+            { x: 8, y: 30, label: '20 cuentos validados', color: '#FF9D00', radius: 8 },
+            { x: 10, y: 60, label: 'Expansión LATAM', color: '#1688B1', radius: 10 }
+        ];
+
+        const areas = [
+            {
+                label: 'Desarrollo tecnológico',
+                backgroundColor: 'rgba(112, 33, 204, 0.1)',
+                borderColor: 'rgba(112, 33, 204, 0.7)',
+                pointBackgroundColor: 'rgba(112, 33, 204, 0)',
+                pointBorderColor: 'rgba(112, 33, 204, 0)',
+                data: [40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95],
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'Validación clínica',
+                backgroundColor: 'rgba(255, 157, 0, 0.1)',
+                borderColor: 'rgba(255, 157, 0, 0.7)',
+                pointBackgroundColor: 'rgba(255, 157, 0, 0)',
+                pointBorderColor: 'rgba(255, 157, 0, 0)',
+                data: [10, 15, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75],
+                fill: true,
+                tension: 0.4
+            },
+            {
+                label: 'Expansión comercial',
+                backgroundColor: 'rgba(22, 136, 177, 0.1)',
+                borderColor: 'rgba(22, 136, 177, 0.7)',
+                pointBackgroundColor: 'rgba(22, 136, 177, 0)',
+                pointBorderColor: 'rgba(22, 136, 177, 0)',
+                data: [5, 10, 15, 25, 30, 40, 50, 55, 60, 65, 70, 80],
+                fill: true,
+                tension: 0.4
             }
-          },
-          datalabels: { display: false }
-        },
-        scales: {
-          y: { min: 0, max: 100, ticks: { callback: v => v + '%' } }
-        }
-      }
+        ];
+
+        const roadmapChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: areas
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            boxWidth: 12,
+                            font: {
+                                family: 'Poppins',
+                                size: 12
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                        titleColor: '#381066',
+                        bodyColor: '#555',
+                        titleFont: {
+                            family: 'Poppins',
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            family: 'Poppins',
+                            size: 12
+                        },
+                        borderColor: 'rgba(112, 33, 204, 0.2)',
+                        borderWidth: 1,
+                        padding: 10,
+                        displayColors: true,
+                        caretSize: 6,
+                        caretPadding: 8,
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}% completado`;
+                            }
+                        }
+                    },
+                    datalabels: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            },
+                            font: {
+                                family: 'Poppins',
+                                size: 11
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'Progreso',
+                            font: {
+                                family: 'Poppins',
+                                size: 12,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            font: {
+                                family: 'Poppins',
+                                size: 11
+                            }
+                        }
+                    }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+
+        // Add milestone markers with annotations
+        setTimeout(() => {
+            milestones.forEach((milestone, index) => {
+                const canvas = roadmapChart.canvas;
+                const ctx = canvas.getContext('2d');
+                const xAxis = roadmapChart.scales.x;
+                const yAxis = roadmapChart.scales.y;
+
+                const xPos = xAxis.getPixelForValue(milestone.x);
+                const yPos = yAxis.getPixelForValue(milestone.y);
+
+                // Draw circle
+                ctx.beginPath();
+                ctx.arc(xPos, yPos, milestone.radius, 0, 2 * Math.PI);
+                ctx.fillStyle = milestone.color;
+                ctx.fill();
+
+                // Draw pulse effect
+                let alpha = 0.5;
+                let size = milestone.radius;
+
+                function drawPulse() {
+                    ctx.beginPath();
+                    ctx.arc(xPos, yPos, size, 0, 2 * Math.PI);
+                    ctx.fillStyle = `rgba(${milestone.color.replace(/[^\d,]/g, '')}, ${alpha})`;
+                    ctx.fill();
+
+                    size += 0.5;
+                    alpha -= 0.01;
+
+                    if (alpha > 0) {
+                        requestAnimationFrame(drawPulse);
+                    } else {
+                        size = milestone.radius;
+                        alpha = 0.5;
+                    }
+                }
+
+                // Draw label
+                ctx.font = "600 12px Poppins";
+                ctx.fillStyle = "#381066";
+                ctx.textAlign = "center";
+
+                // Position label based on position in chart
+                let labelYOffset = -25;
+                if (milestone.y > 60) {
+                    labelYOffset = 25; // Place label below point if point is high
+                }
+
+                ctx.fillText(milestone.label, xPos, yPos + labelYOffset);
+
+                // Start pulse animation with delay based on index
+                setTimeout(() => {
+                    drawPulse();
+                }, index * 300 + 1000);
+            });
+        }, 500);
     });
-  });
 </script>
 </body>
 </html>
