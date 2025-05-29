@@ -1,350 +1,198 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentores y Advisors"</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;family=Merriweather:wght@400;600;700&amp;display=swap">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="global.css">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        h1 {
-            font-family: 'Merriweather', serif;
-            color: #381066;
-            font-size: 42px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-        }
-        .subtitle {
-            font-family: 'Merriweather', serif;
-            color: #7021CC;
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards 0.2s;
-        }
-        .team-cohesion-statement {
-            font-family: 'Poppins', sans-serif;
-            font-size: 25px;
-            color: #555;
-            margin-top: -5px;
-            margin-bottom: 35px;
-            text-align: center;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.5;
-            opacity: 0;
-            animation: fadeIn 0.8s ease forwards 0.4s;
-        }
-        .highlight-statement {
-            font-weight: 600;
-            color: #7021CC;
-        }
-        .team-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        .team-member {
-            flex: 1;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-            position: relative;
-        }
-        .team-member.guido {
-            animation-delay: 0.5s;
-        }
-        .team-member.daniel {
-            animation-delay: 0.7s;
-        }
-        .team-member.gala {
-            animation-delay: 0.9s;
-        }
-        .team-member:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-        }
-        .member-photo-wrapper {
-            width: 180px;
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-            flex-shrink: 0;
-            background-color: #f8f8f8;
-            margin: 0 auto 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .guido .member-photo-wrapper {
-            border: 3px solid #7021CC;
-        }
-        .daniel .member-photo-wrapper {
-            border: 3px solid #1688B1;
-        }
-        .gala .member-photo-wrapper {
-            border: 3px solid #FF9D00;
-        }
-        .team-member:hover .member-photo-wrapper {
-            transform: scale(1.05);
-        }
-        .member-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        .team-member:hover .member-photo {
-            transform: scale(1.1);
-        }
-        .member-content {
-            padding: 0 20px 20px;
-            text-align: center;
-        }
-        .member-name {
-            font-family: 'Merriweather', serif;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        .guido .member-name {
-            color: #7021CC;
-        }
-        .daniel .member-name {
-            color: #1688B1;
-        }
-        .gala .member-name {
-            color: #FF9D00;
-        }
-        .member-role {
-            font-size: 16px;
-            font-weight: 500;
-            color: #666;
-            margin-bottom: 12px;
-        }
-        .expertise-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        .expertise-tag {
-            font-size: 12px;
-            padding: 3px 10px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-        .guido .expertise-tag {
-            background-color: rgba(112, 33, 204, 0.08);
-            color: #7021CC;
-        }
-        .daniel .expertise-tag {
-            background-color: rgba(22, 136, 177, 0.08);
-            color: #1688B1;
-        }
-        .gala .expertise-tag {
-            background-color: rgba(255, 157, 0, 0.08);
-            color: #FF9D00;
-        }
-        .past-experience {
-            margin-top: 12px;
-            padding-top: 10px;
-            border-top: 1px solid #eee;
-        }
-        .experience-label {
-            font-size: 12px;
-            color: #777;
-            margin-bottom: 6px;
-            font-weight: 500;
-        }
-        .logos-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            align-items: center;
-        }
-        .experience-logo {
-            height: 36px;
-            width: auto;
-            max-width: 120px;
-            object-fit: contain;
-            transition: all 0.3s ease;
-            filter: grayscale(0%);
-        }
-        .experience-logo:hover {
-            transform: scale(1.1);
-        }
-        .logo-small {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 24px;
-            font-weight: bold;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards 0.2s;
-        }
-        .logo-small .new {
-            color: #7021CC;
-        }
-        .logo-small .little {
-            color: #FF9D00;
-        }
-        .mascot-container {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .mascot-container:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .mascot-img {
-            width: 85%;
-            height: 85%;
-            object-fit: contain;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentores y Advisors</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fdfdfd;
+}
+.gradient-bg {
+  background: linear-gradient(135deg, rgba(206, 171, 255, 0.1) 0%, rgba(249, 199, 100, 0.1) 100%);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+}
+h1 {
+  font-family: 'Merriweather', serif;
+  color: #381066;
+  font-size: 60px;
+  font-weight: 700;
+  margin: 30px 0 10px;
+  text-align: center;
+}
+.subtitle {
+  font-family: 'Merriweather', serif;
+  color: #7021CC;
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.team-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.team-member {
+  background: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  flex: 1 1 350px;
+  max-width: 420px;
+  padding: 30px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+.team-member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+.member-photo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.member-photo {
+  width: 250px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
+}
+.member-name {
+  font-family: 'Merriweather', serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #7021CC;
+}
+.member-role {
+  font-size: 20px;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.expertise-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.expertise-tag {
+  font-size: 16px;
+  background-color: rgba(112, 33, 204, 0.08);
+  color: #7021CC;
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+.past-experience {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #777;
+}
+.logos-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.logos-container img {
+  height: 45px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.logos-container img:hover {
+  transform: scale(1.1);
+}
+</style>
 </head>
 <body>
-<div class="slide">
-    <div class="gradient-bg"></div>
+<div class="gradient-bg"></div>
 
-    <div class="logo-small">
-        <span class="new">New</span><span class="little">Little</span>
+<h1>Equipo Fundador NewLittle</h1>
+<div class="subtitle">Crecemos juntos y transformamos</div>
+
+<div class="team-container">
+  <!-- Guido -->
+  <div class="team-member">
+    <div class="member-photo-wrapper">
+      <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/399bb307-1822-41bf-bb89-a25dc878673c"
+           alt="Guido Secchi" class="member-photo">
     </div>
-
-    <h1>Estructura completa del equipo NewLittle</h1>
-    <div class="subtitle">Equipo Fundador</div>
-    <p class="team-cohesion-statement">
-        Somos un equipo fundador <span class="highlight-statement">sólido</span>, con varios proyectos y vida personal
-        <span class="highlight-statement">juntos</span>.
-    </p>
-
-    <div class="team-container">
-        <!-- Guido Secchi -->
-        <div class="team-member guido">
-            <div class="member-photo-wrapper">
-                <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/399bb307-1822-41bf-bb89-a25dc878673c"
-                     alt="Guido Secchi" class="member-photo">
-            </div>
-            <div class="member-content">
-                <div class="member-name">Guido Alan Secchi</div>
-                <div class="member-role">CEO &amp; Co-Fundador</div>
-                <div class="expertise-tags">
-                    <span class="expertise-tag">Finanzas Globales</span>
-                    <span class="expertise-tag">Corporate Finance</span>
-                    <span class="expertise-tag">Strategic Planning</span>
-                    <span class="expertise-tag">M&amp;A</span>
-                </div>
-                <div class="past-experience">
-                    <span class="experience-label">Experiencia previa en:</span>
-                    <div class="logos-container">
-                        <img src="https://page1.genspark.site/v1/base64_upload/422c978cd065b158bec7d58b328caa78"
-                             alt="Kangubox" class="experience-logo">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Daniel Carmona -->
-        <div class="team-member daniel">
-            <div class="member-photo-wrapper">
-                <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/9004b08d-b74b-49e0-b9ee-3d37ac754372"
-                     alt="Daniel Martin Maestro" class="member-photo">
-            </div>
-            <div class="member-content">
-                <div class="member-name">Daniel Martín Maestro</div>
-                <div class="member-role">CTO &amp; Co-Fundador</div>
-                <div class="expertise-tags">
-                    <span class="expertise-tag">Full Stack</span>
-                    <span class="expertise-tag">Inteligencia Artificial</span>
-                    <span class="expertise-tag">Cloud</span>
-                    <span class="expertise-tag">Arquitectura</span>
-                </div>
-                <div class="past-experience">
-                    <span class="experience-label">Experiencia previa en:</span>
-                    <div class="logos-container">
-                        <img src="https://page1.genspark.site/v1/base64_upload/b4dc2f3ea0e300b07c4bdab6a89c9a59"
-                             alt="AWS y Accenture" class="experience-logo">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Gala León -->
-        <div class="team-member gala" data-slide-hover-selected="true">
-            <div class="member-photo-wrapper">
-                <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/d8a40267-90ab-47f6-9ac5-19fb028fc803"
-                     alt="Gala Ashlen Secchi" class="member-photo">
-            </div>
-            <div class="member-content">
-                <div class="member-name">Gala Ashlen Secchi</div>
-                <div class="member-role">COO &amp; Co-Fundadora</div>
-                <div class="expertise-tags">
-                    <span class="expertise-tag">Psicología</span>
-                    <span class="expertise-tag">Trauma</span>
-                    <span class="expertise-tag">Clínico</span>
-                </div>
-                <div class="past-experience">
-                    <span class="experience-label">Experiencia previa en:</span>
-                    <div class="logos-container">
-                        <img src="https://page1.genspark.site/v1/base64_upload/c390d4904b71c653195e526f2e041e31"
-                             alt="Quirón Salud y Hospital Niño Jesús" class="experience-logo">
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="member-name">Guido Alan Secchi</div>
+    <div class="member-role">CEO & Co-Fundador</div>
+    <div class="expertise-tags">
+      <span class="expertise-tag">Finanzas Globales</span>
+      <span class="expertise-tag">Corporate Finance</span>
+      <span class="expertise-tag">Strategic Planning</span>
+      <span class="expertise-tag">M&A</span>
     </div>
+    <div class="past-experience">
+      Experiencia previa en:
+      <div class="logos-container">
+        <img src="https://page1.genspark.site/v1/base64_upload/422c978cd065b158bec7d58b328caa78" alt="Kangubox">
+      </div>
+    </div>
+  </div>
+
+  <!-- Daniel -->
+  <div class="team-member">
+    <div class="member-photo-wrapper">
+      <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/9004b08d-b74b-49e0-b9ee-3d37ac754372"
+           alt="Daniel Martin Maestro" class="member-photo">
+    </div>
+    <div class="member-name">Daniel Martín Maestro</div>
+    <div class="member-role">CTO & Co-Fundador</div>
+    <div class="expertise-tags">
+      <span class="expertise-tag">Full Stack</span>
+      <span class="expertise-tag">Inteligencia Artificial</span>
+      <span class="expertise-tag">Cloud</span>
+      <span class="expertise-tag">Arquitectura</span>
+    </div>
+    <div class="past-experience">
+      Experiencia previa en:
+      <div class="logos-container">
+        <img src="https://page1.genspark.site/v1/base64_upload/b4dc2f3ea0e300b07c4bdab6a89c9a59" alt="AWS y Accenture">
+      </div>
+    </div>
+  </div>
+
+  <!-- Gala -->
+  <div class="team-member">
+    <div class="member-photo-wrapper">
+      <img src="https://gensparkpublicblob.blob.core.windows.net/user-upload-image/v1/d8a40267-90ab-47f6-9ac5-19fb028fc803"
+           alt="Gala Ashlen Secchi" class="member-photo">
+    </div>
+    <div class="member-name">Gala Ashlen Secchi</div>
+    <div class="member-role">COO & Co-Fundadora</div>
+    <div class="expertise-tags">
+      <span class="expertise-tag">Psicología</span>
+      <span class="expertise-tag">Trauma</span>
+      <span class="expertise-tag">Clínico</span>
+    </div>
+    <div class="past-experience">
+      Experiencia previa en:
+      <div class="logos-container">
+        <img src="https://page1.genspark.site/v1/base64_upload/c390d4904b71c653195e526f2e041e31"
+             alt="Quirón Salud y Hospital Niño Jesús">
+      </div>
+    </div>
+  </div>
 </div>
 
-<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script>
-<script id="html_badge_script1">
-    window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-        "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDtEdtTmXtclHY3DmHACgcBnrnVRXFMl4w18vMDWqfo1yAv2sE5AQeQOwVR1L8uwxicfd6lzXApAsO8j94QQhd%2BBGkgJPgozNrqUJrStfHr3951e8R7pSDL7atYnKgzE3aQdJr1beF8MZbsTf2xADl1rr9svnlkX5KIeMprh0QkFH6YoTnIfcaS9KM3laFnJlwycG8AlL5lthQUmllSwt84Gt11IyvFRcIuHTQK9rcOvwVKrubHfWnXwlQtByaS4Ix1pg8jyufXvie6ZGK84AZ60GsKLnxxquKX4vEo33lWcn%2Bz1xs4QfH7MpGQoWkS5xzQ3w9iCmPBnJTQItBeWpi6q53Fq285yzjoOjFvS2P9UC8yeIQkiGVMSqSHwBgv%2BHlidH4ARB2N01Nd4bZZQZMt%2BONSLQcP2BzBUvNoxQ1O82zbBrxIM3nqMjxTJjVNLzE1LH2kDViXCtJPO7Ejm3%2BJSyr5BtmNSs7W4JJa%2BaZ7NvouS8UOhkZor45MzjtIdFESqd6wL%2BwQ1aBIpwA8mSrCgTHoVvOi7E72fRX71WpY6716V%2F%2Bmu2LQ608ethEKkBRyGdf5jlyBOJ6Ie3FdttvRcN5%2BJxsWxIXZ5zxB%2BCzEMZFxjXK7FKvVqPeUyUjaw1XUuDLd0mQzh68pZxNrJyFsD55FP5hId%2F1GuRIsjSCAF99Haz%2BRSe9I2xzskwYv%2FvX5oW1RbIK%2B8Gf30ffz%2B5iRc%3D";
-    window.__genspark_locale = "es-ES";
-    window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDtEdtTmXtclHY3DmHACgcBnrnVRXFMl4w18vMDWqfo1yAv2sE5AQeQOwVR1L8uwxicfd6lzXApAsO8j94QQhd+BGkgJPgozNrqUJrStfHr3951e8R7pSDL7atYnKgzE3aQdJr1beF8MZbsTf2xADl1rr9svnlkX5KIeMprh0QkFH6YoTnIfcaS9KM3laFnJlwycG8AlL5lthQUmllSwt84Gt11IyvFRcIuHTQK9rcOvwVKrubHfWnXwlQtByaS4Ix1pg8jyufXvie6ZGK84AZ60GsKLnxxquKX4vEo33lWcn+z1xs4QfH7MpGQoWkS5xzQ3w9iCmPBnJTQItBeWpi6q53Fq285yzjoOjFvS2P9UC8yeIQkiGVMSqSHwBgv+HlidH4ARB2N01Nd4bZZQZMt+ONSLQcP2BzBUvNoxQ1O82zbBrxIM3nqMjxTJjVNLzE1LH2kDViXCtJPO7Ejm3+JSyr5BtmNSs7W4JJa+aZ7NvouS8UOhkZor45MzjtIdFESqd6wL+wQ1aBIpwA8mSrCgTHoVvOi7E72fRX71WpY6716V/+mu2LQ608ethEKkBRyGdf5jlyBOJ6Ie3FdttvRcN5+JxsWxIXZ5zxB+CzEMZFxjXK7FKvVqPeUyUjaw1XUuDLd0mQzh68pZxNrJyFsD55FP5hId/1GuRIsjSCAF99Haz+RSe9I2xzskwYv/vX5oW1RbIK+8Gf30ffz+5iRc=";
-</script>
 </body>
 </html>
