@@ -40,19 +40,6 @@
             margin-bottom: 30px;
             font-weight: 500;
         }
-        .logo-small {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .logo-small .new {
-            color: #7021CC;
-        }
-        .logo-small .little {
-            color: #FF9D00;
-        }
         .one-for-one-container {
             display: flex;
             height: 450px;
@@ -60,7 +47,7 @@
             margin-bottom: 25px;
         }
         .visual-section {
-            width: 45%;
+            width: 65%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -118,8 +105,8 @@
             flex-grow: 1;
         }
         .point-text {
-            font-size: 15px;
-            line-height: 1.4;
+            font-size: 20px;
+            line-height: 1;
             color: #444;
             margin: 0;
         }
@@ -140,8 +127,8 @@
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             padding: 25px;
-            width: 90%;
-            height: 90%;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -152,7 +139,7 @@
         }
         .model-title {
             font-family: 'Merriweather', serif;
-            font-size: 22px;
+            font-size: 30px;
             font-weight: 600;
             color: #381066;
             margin-bottom: 15px;
@@ -175,8 +162,8 @@
             position: relative;
         }
         .model-circle {
-            width: 110px;
-            height: 110px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -199,15 +186,15 @@
         .circle-right {
             background: linear-gradient(135deg, #FF9D00 0%, #FFBB3C 100%);
             color: white;
-            margin-left: 20px;
+            margin-left: 100px;
         }
         .model-arrow {
             position: absolute;
-            width: 50%;
-            height: 8px;
+            width: 100%;
+            height: 15px;
             background: linear-gradient(90deg, #7021CC 0%, #FF9D00 100%);
             top: 50%;
-            left: 25%;
+            left: 0%;
             transform: translateY(-50%);
             z-index: 1;
             border-radius: 4px;
@@ -252,7 +239,7 @@
             margin-bottom: 3px;
         }
         .counter-label {
-            font-size: 12px;
+            font-size: 20px;
             color: #666;
             text-align: center;
         }
@@ -277,7 +264,7 @@
             align-items: center;
         }
         .sek-logo-title {
-            font-size: 12px;
+            font-size: 22px;
             color: #666;
             margin-bottom: 5px;
         }
@@ -313,7 +300,7 @@
         .invitation-box {
             background: linear-gradient(135deg, rgba(112, 33, 204, 0.05) 0%, rgba(255, 157, 0, 0.05) 100%);
             border-radius: 12px;
-            padding: 18px;
+            padding: 30px;
             text-align: center;
             border-left: 6px solid #7021CC;
             border-right: 6px solid #FF9D00;
@@ -329,7 +316,7 @@
         }
         .invitation-text {
             font-family: 'Merriweather', serif;
-            font-size: 18px;
+            font-size: 30px;
             line-height: 1.4;
             color: #381066;
             font-weight: 500;
@@ -385,9 +372,8 @@
                                     <div class="circle-icon">
                                         <i class="fas fa-hand-holding-heart"></i>
                                     </div>
-                                    <div>1 Donación</div>
+                                    <div>1 Áportación</div>
                                 </div>
-                                <div class="model-label label-bottom">Fundación Infantil</div>
                             </div>
                         </div>
 
@@ -471,39 +457,43 @@
 
         <div class="invitation-box">
             <div class="invitation-text">
-                "Únete a NewLittle en nuestro compromiso de transformar vidas, una historia a la vez. Juntos, podemos cerrar la brecha de acceso al bienestar emocional infantil"
+                "Nuestro compromiso de transformar vidas, una historia a la vez.
+
+                Podemos cerrar la brecha de acceso al bienestar emocional infantil"
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Counter animations for impact numbers
-            function animateCounter(elementId, targetValue, duration, prefix = '', suffix = '') {
-                const element = document.getElementById(elementId);
-                if (!element) return;
+document.addEventListener('DOMContentLoaded', function() {
+    function animateCounter(elementId, targetValue, duration, increment = 1, prefix = '', suffix = '') {
+        const element = document.getElementById(elementId);
+        if (!element) return;
 
-                const startValue = 0;
-                const stepTime = Math.abs(Math.floor(duration / targetValue));
-                let currentValue = startValue;
+        let currentValue = 0;
+        const steps = Math.ceil(targetValue / increment);
+        const stepTime = Math.abs(Math.floor(duration / steps));
 
-                const timer = setInterval(function() {
-                    currentValue += 1;
-                    element.textContent = prefix + currentValue + suffix;
-
-                    if (currentValue >= targetValue) {
-                        clearInterval(timer);
-                    }
-                }, stepTime);
+        const timer = setInterval(function() {
+            currentValue += increment;
+            if (currentValue > targetValue) {
+                currentValue = targetValue;
             }
+            element.textContent = prefix + currentValue + suffix;
 
-            // Start counter animations after a delay
-            setTimeout(function() {
-                animateCounter('schoolsCount', 7, 2000);
-                animateCounter('foundationsCount', 1, 2000);
-                animateCounter('childrenCount', 1500, 3000);
-            }, 2000);
-        });
-    </script>
+            if (currentValue >= targetValue) {
+                clearInterval(timer);
+            }
+        }, stepTime);
+    }
+
+    setTimeout(function() {
+        animateCounter('schoolsCount', 7, 1000); // normal
+        animateCounter('foundationsCount', 1, 1000); // normal
+        animateCounter('childrenCount', 1500, 1000, 25); // rápido: de 100 en 100
+    }, 2000);
+});
+</script>
+
 </body>
 </html>
