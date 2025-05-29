@@ -83,21 +83,35 @@
           gap: 30px;
           margin-bottom: 30px;
         }
-        .advisor-card {
-          height: auto;
-          display: flex;
-          background: #fff;
-          border-radius: 12px;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-          overflow: hidden;
-          width: 45%;
-          max-width: 520px;
-          transition: 0.3s ease;
-        }
-        .advisor-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+        /* Más grande la tarjeta */
+.advisor-card {
+  height: auto;
+  display: flex;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 1000px; /* Aumentado de 800px a 1000px */
+  transition: 0.3s ease;
+  padding: 10px; /* Más espacio interno */
+}
+.advisor-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
 
-        .advisor-photo-wrapper { display: flex; align-items: center; justify-content: center; width: 140px; background: rgba(22,136,177,0.05); }
-        .advisor-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(22,136,177,0.9); }
+/* Elimina el borde redondeado de la foto y aumenta tamaño */
+.advisor-photo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px; /* Más ancho */
+  background: rgba(22,136,177,0.05);
+}
+.advisor-photo {
+  width: 160px; /* Más grande */
+  height: 160px; /* Más grande */
+  border-radius: 0; /* SIN redondeo */
+  object-fit: cover;
+  border: 3px solid rgba(22,136,177,0.9);
+}
 
         .advisor-info {
           flex: 1;
@@ -116,7 +130,7 @@
         .advisor-tag { font-size: 18px; background: rgba(112,33,204,0.08); color: #7021CC; padding: 2px 6px; border-radius: 10px; }
 
         .key-partner { text-align: center; background: linear-gradient(135deg, rgba(112,33,204,0.05), rgba(255,157,0,0.05)); border-radius: 12px; margin-top: 20px; padding: 15px; }
-        .key-partner-title { font-family: 'Merriweather', serif; font-size: 18px; font-weight: 600; color: #381066; margin-bottom: 10px; }
+        .key-partner-title { font-family: 'Merriweather', serif; font-size: 40px; font-weight: 600; color: #381066; margin-bottom: 10px; }
         .key-partner-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
         .partner-logo { background: #fff; padding: 10px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.07); transition: 0.3s ease; }
         .partner-logo:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
