@@ -20,3 +20,18 @@ html, body {
   display: flex;
   flex-direction: column;
 }
+
+.logo-small {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 40px;
+            font-weight: bold;
+            font-family: 'Dongle', sans-serif;
+}
+.logo-small .new {
+            color: #7021CC;
+        }
+        .logo-small .little {
+            color: #FF9D00;
+        }
