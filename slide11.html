@@ -34,20 +34,6 @@
             text-shadow: 0 2px 3px rgba(0,0,0,0.1);
             animation: fadeIn 0.65s ease-out;
         }
-        .logo-small {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 24px;
-            font-weight: bold;
-            animation: fadeInRight 0.6s ease-out;
-        }
-        .logo-small .new {
-            color: #7021CC;
-        }
-        .logo-small .little {
-            color: #FF9D00;
-        }
         .comparison-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -121,7 +107,7 @@
             justify-content: center;
             border-radius: 50%;
             background-color: rgba(255,255,255,0.2);
-            font-size: 34px;
+            font-size: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
         }
@@ -141,11 +127,11 @@
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         .card-subtitle {
-            font-size: 14px;
+            font-size: 12px;
             opacity: 0.9;
         }
         .card-content {
-            padding: 24px;
+            padding: 10px;
         }
         .feature-item {
             display: flex;
@@ -165,7 +151,7 @@
             left: calc(100% + 10px);
             top: 50%;
             transform: translateY(-50%) scale(0.95);
-            width: 220px;
+            width: 200px;
             padding: 12px;
             background: white;
             border-radius: 8px;
@@ -219,7 +205,7 @@
             color: #da3633;
         }
         .feature-text {
-            font-size: 15px;
+            font-size: 13px;
             color: #333;
             font-weight: 400;
         }
@@ -230,7 +216,7 @@
         .key-advantage {
             background: linear-gradient(135deg, rgba(112, 33, 204, 0.08) 0%, rgba(255, 157, 0, 0.08) 100%);
             border-radius: 16px;
-            padding: 30px;
+            padding: 10px;
             text-align: center;
             border-left: 5px solid #FF9D00;
             border-right: 5px solid #7021CC;
@@ -291,7 +277,7 @@
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             padding: 10px;
             border-radius: 12px;
             background-color: rgba(255, 255, 255, 0.7);
@@ -366,7 +352,7 @@
         }
         .flow-arrow {
             color: #7021CC;
-            font-size: 34px;
+            font-size: 20px;
             animation: bounceDown 2s infinite;
         }
         @keyframes bounceDown {
@@ -402,211 +388,145 @@
         <div class="legend">
             <div class="legend-item">
                 <span class="legend-icon positive-icon"><i class="fas fa-check-circle"></i></span>
-                <span>Excelente</span>
+                <span>Alta</span>
             </div>
             <div class="legend-item">
                 <span class="legend-icon medium-icon"><i class="fas fa-minus-circle"></i></span>
-                <span>Aceptable</span>
+                <span>Media</span>
             </div>
             <div class="legend-item">
                 <span class="legend-icon negative-icon"><i class="fas fa-times-circle"></i></span>
-                <span>Deficiente</span>
+                <span>Baja</span>
             </div>
         </div>
 
-        <div class="comparison-grid">
-            <!-- Newslittle Card -->
-            <div class="competitor-card primary">
-                <div class="card-header newslittle-header">
-                    <div class="card-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="card-title">NewLittle</div>
-                    <div class="card-subtitle">IA Adaptativa para Niños</div>
-                </div>
-                <div class="card-content">
-                    <div class="feature-item">
-                        <div class="feature-icon positive-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text primary-feature">Personalización en tiempo real</div>
-                        <div class="feature-tooltip">
-                            <div class="tooltip-title">Personalización única</div>
-                            <div class="tooltip-description">Transforma objetos reales del niño en personajes de cuento en minutos, creando conexión emocional inmediata y significativa.</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon positive-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text primary-feature">Base científica validada</div>
-                        <div class="feature-tooltip">
-                            <div class="tooltip-title">Rigor científico</div>
-                            <div class="tooltip-description">Fundamentada en estudios neurológicos y psicológicos sobre efectos de narrativas personalizadas en la reducción del estrés infantil.</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon positive-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text primary-feature">Enfoque en salud mental</div>
-                        <div class="feature-tooltip">
-                            <div class="tooltip-title">Terapia narrativa infantil</div>
-                            <div class="tooltip-description">Diseñada específicamente para mejorar el bienestar emocional con metodologías validadas por psicólogos especialistas.</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon positive-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text primary-feature">Generación instantánea</div>
-                        <div class="feature-tooltip">
-                            <div class="tooltip-title">Inmediatez terapéutica</div>
-                            <div class="tooltip-description">Cuentos personalizados listos en minutos, justo cuando se necesitan, adaptados a situaciones emocionales específicas.</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon positive-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text primary-feature">Modelo de negocio B2B</div>
-                        <div class="feature-tooltip">
-                            <div class="tooltip-title">Escalabilidad institucional</div>
-                            <div class="tooltip-description">Diseñado para integrarse en hospitales, colegios y centros terapéuticos con sistema de licencias y soporte profesional.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="comparison-grid">
+  <!-- NewLittle Card -->
+  <div class="competitor-card primary">
+    <div class="card-header newslittle-header">
+      <div class="card-icon">
+        <i class="fas fa-brain"></i>
+      </div>
+      <div class="card-title">NewLittle</div>
+      <div class="card-subtitle">IA Adaptativa para Niños</div>
+    </div>
+    <div class="card-content">
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text primary-feature">Personalización en tiempo real</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text primary-feature">Base científica validada</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text primary-feature">Enfoque en salud mental</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text primary-feature">Generación instantánea</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text primary-feature">Modelo de negocio B2B</div>
+      </div>
+    </div>
+  </div>
 
-            <!-- Apps Educativas Card -->
-            <div class="competitor-card">
-                <div class="card-header apps-header">
-                    <div class="card-icon">
-                        <i class="fas fa-tablet-alt"></i>
-                    </div>
-                    <div class="card-title">Apps Educativas</div>
-                    <div class="card-subtitle">Contenido Digital</div>
-                </div>
-                <div class="card-content">
-                    <div class="feature-item">
-                        <div class="feature-icon negative-icon">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="feature-text">Personalización en tiempo real</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon medium-icon">
-                            <i class="fas fa-minus"></i>
-                        </div>
-                        <div class="feature-text">Base científica validada</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon positive-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">Enfoque en salud mental</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon medium-icon">
-                            <i class="fas fa-minus"></i>
-                        </div>
-                        <div class="feature-text">Generación instantánea</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon medium-icon">
-                            <i class="fas fa-minus"></i>
-                        </div>
-                        <div class="feature-text">Modelo de negocio B2B</div>
-                    </div>
-                </div>
-            </div>
+  <!-- Apps Educativas Card -->
+  <div class="competitor-card">
+    <div class="card-header apps-header">
+      <div class="card-icon"><i class="fas fa-tablet-alt"></i></div>
+      <div class="card-title">Apps Educativas</div>
+      <div class="card-subtitle">Contenido Digital</div>
+    </div>
+    <div class="card-content">
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text">Personalización en tiempo real</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text">Base científica validada</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon medium-icon"><i class="fas fa-minus"></i></div>
+        <div class="feature-text">Enfoque en salud mental</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon medium-icon"><i class="fas fa-minus"></i></div>
+        <div class="feature-text">Generación instantánea</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon negative-icon"><i class="fas fa-times"></i></div>
+        <div class="feature-text">Modelo de negocio B2B</div>
+      </div>
+    </div>
+  </div>
 
-            <!-- Libros Físicos Card -->
-            <div class="competitor-card">
-                <div class="card-header books-header">
-                    <div class="card-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div class="card-title">Libros Físicos</div>
-                    <div class="card-subtitle">Formato Tradicional</div>
-                </div>
-                <div class="card-content">
-                    <div class="feature-item">
-                        <div class="feature-icon negative-icon">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="feature-text">Personalización en tiempo real</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon medium-icon">
-                            <i class="fas fa-minus"></i>
-                        </div>
-                        <div class="feature-text">Base científica validada</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon positive-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">Enfoque en salud mental</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon negative-icon">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="feature-text">Generación instantánea</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon negative-icon">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="feature-text">Modelo de negocio B2B</div>
-                    </div>
-                </div>
-            </div>
+  <!-- Libros Físicos Card -->
+  <div class="competitor-card">
+    <div class="card-header books-header">
+      <div class="card-icon"><i class="fas fa-book"></i></div>
+      <div class="card-title">Libros Físicos</div>
+      <div class="card-subtitle">Formato Tradicional</div>
+    </div>
+    <div class="card-content">
+      <div class="feature-item">
+        <div class="feature-icon negative-icon"><i class="fas fa-times"></i></div>
+        <div class="feature-text">Personalización en tiempo real</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon medium-icon"><i class="fas fa-minus"></i></div>
+        <div class="feature-text">Base científica validada</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon medium-icon"><i class="fas fa-minus"></i></div>
+        <div class="feature-text">Enfoque en salud mental</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon negative-icon"><i class="fas fa-times"></i></div>
+        <div class="feature-text">Generación instantánea</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon medium-icon"><i class="fas fa-minus"></i></div>
+        <div class="feature-text">Modelo de negocio B2B</div>
+      </div>
+    </div>
+  </div>
 
-            <!-- Chatbots Card -->
-            <div class="competitor-card">
-                <div class="card-header chatbots-header">
-                    <div class="card-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="card-title">Chatbots</div>
-                    <div class="card-subtitle">Asistentes Virtuales</div>
-                </div>
-                <div class="card-content">
-                    <div class="feature-item">
-                        <div class="feature-icon medium-icon">
-                            <i class="fas fa-minus"></i>
-                        </div>
-                        <div class="feature-text">Personalización en tiempo real</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon negative-icon">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="feature-text">Base científica validada</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon negative-icon">
-                            <i class="fas fa-times"></i>
-                        </div>
-                        <div class="feature-text">Enfoque en salud mental</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon positive-icon">
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="feature-text">Generación instantánea</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon medium-icon">
-                            <i class="fas fa-minus"></i>
-                        </div>
-                        <div class="feature-text">Modelo de negocio B2B</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Chatbots Card -->
+  <div class="competitor-card">
+    <div class="card-header chatbots-header">
+      <div class="card-icon"><i class="fas fa-robot"></i></div>
+      <div class="card-title">Chatbots</div>
+      <div class="card-subtitle">Asistentes Virtuales</div>
+    </div>
+    <div class="card-content">
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text">Personalización en tiempo real</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon negative-icon"><i class="fas fa-times"></i></div>
+        <div class="feature-text">Base científica validada</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon negative-icon"><i class="fas fa-times"></i></div>
+        <div class="feature-text">Enfoque en salud mental</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text">Generación instantánea</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon positive-icon"><i class="fas fa-check"></i></div>
+        <div class="feature-text">Modelo de negocio B2B</div>
+      </div>
+    </div>
+  </div>
+</div>
 
         <!-- Flow indicator with arrow pointing to conclusion -->
         <div class="flow-indicator">
